@@ -1,0 +1,8 @@
+athletes = (id, name, surname, date_birth, cell_phone, active) - Atletas
+opposing_teams = (id, name, responsible, cell_phone, active)   - Times Adversãrios
+matches = (id, date, hour, opposing_team_id, own_goals, goals_in_favor, local) - Partidas
+goals = (id, match_id, athete_id, goals) - Gols Feitos
+goalkeeper_goals = (id, goals, athete_id) - Gols Tomados (Para saber quem tomou mais gol)
+
+
+
