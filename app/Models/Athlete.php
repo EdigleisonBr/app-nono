@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Athlete extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'surname', 'cell_phone', 'date_birth', 'active'];
 }

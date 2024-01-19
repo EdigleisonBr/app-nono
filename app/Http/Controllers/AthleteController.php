@@ -14,7 +14,8 @@ class AthleteController extends Controller
      */
     public function index()
     {
-        //
+        $athletes = Athlete::all();
+        return view('athlete.index', compact('athletes'));
     }
 
     /**
@@ -24,7 +25,7 @@ class AthleteController extends Controller
      */
     public function create()
     {
-        //
+        return view('athlete.create');
     }
 
     /**
@@ -35,7 +36,19 @@ class AthleteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $athlete = new Athlete;
+        $athlete->name = $request->name;
+        $athlete->surname = $request->surname;    
+        $athlete->cell_phone = $request->cell_phone; 
+        $athlete->date_birth = $request->date_birth; 
+        if ($request->active){
+            $athlete->active = 1;
+        }
+        else{ $athlete->active = 0; }
+        $athlete->save();
+
+        // toast('Cadastro realizado com sucesso!','success');
+        return redirect('/athlete/index');
     }
 
     /**
@@ -44,9 +57,10 @@ class AthleteController extends Controller
      * @param  \App\Models\Athlete  $athlete
      * @return \Illuminate\Http\Response
      */
-    public function show(Athlete $athlete)
+    public function show($id)
     {
-        //
+        $athlete = Athlete::findOrFail($id);
+        return view('athlete.show', ['athlete' => $athlete]);
     }
 
     /**
@@ -55,9 +69,10 @@ class AthleteController extends Controller
      * @param  \App\Models\Athlete  $athlete
      * @return \Illuminate\Http\Response
      */
-    public function edit(Athlete $athlete)
+    public function edit($id)
     {
-        //
+        $athlete = Athlete::findOrFail($id);
+        return view('athlete.edit', ['athlete' => $athlete]);
     }
 
     /**
@@ -67,9 +82,13 @@ class AthleteController extends Controller
      * @param  \App\Models\Athlete  $athlete
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Athlete $athlete)
+    public function update(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['active'] = isset($request->active) ? 1 : 0;
+        Athlete::findOrFail($request->id)->update($data);
+        // toast('Cadastro editado com sucesso!','success');
+        return redirect('/athlete/index');
     }
 
     /**

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AthleteController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/athlete/index', [AthleteController::class, 'index']);
+Route::get('/athlete/create', [AthleteController::class, 'create']);
+Route::post('/athlete', [AthleteController::class, 'store']);
+Route::get('/athlete/edit/{id}', [AthleteController::class, 'edit']);
+Route::put('/athlete/update/{id}', [AthleteController::class, 'update']);
+Route::get('/athlete/show/{id}', [AthleteController::class, 'show']);
 
 Route::get('/', function () {
     return view('dashboard');
