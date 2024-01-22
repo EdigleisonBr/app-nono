@@ -28,6 +28,12 @@
     <!-- <link href="../assets/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="{{ asset('../assets/css/bootstrap.min.css') }}">
 
+    <!-- select2 -->
+    <link rel="stylesheet" href="{{ asset('../assets/vendor/select2/dist/css/select2.min.css') }}">
+
+    <!-- datatables -->
+    <link rel="stylesheet" href="{{ asset('../assets/vendor/css/datatables.css') }}">
+
     <!-- Template Stylesheet -->
     <link rel="stylesheet" href="{{ asset('../assets/css/style.css') }}">
 </head>
@@ -121,8 +127,13 @@
         });
     </script>
 
+    <!-- select2 -->
+    <script src="{{ asset('../assets/vendor/select2/dist/js/select2.min.js') }}"></script>
+
     <!-- Template Javascript -->
     <script src="{{ asset('../assets/js/main.js') }}"></script>
+    
+    @stack('scripts')
 </body>
 
 </html>

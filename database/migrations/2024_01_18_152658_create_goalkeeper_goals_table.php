@@ -16,6 +16,7 @@ class CreateGoalkeeperGoalsTable extends Migration
         Schema::create('goalkeeper_goals', function (Blueprint $table) {
             $table->id();
             $table->integer('goals');
+            $table->foreignId('match_id')->constrained('matches');
             $table->foreignId('athlete_id')->constrained('athletes');
             $table->timestamps();
         });

@@ -39,8 +39,12 @@ class AthleteController extends Controller
         $athlete = new Athlete;
         $athlete->name = $request->name;
         $athlete->surname = $request->surname;    
-        $athlete->cell_phone = $request->cell_phone; 
+        $athlete->cell_phone = $request->cell_phone;
         $athlete->date_birth = $request->date_birth; 
+        if ($request->goalkeeper){
+            $athlete->goalkeeper = 1;
+        }
+        else{ $athlete->goalkeeper = 0; }
         if ($request->active){
             $athlete->active = 1;
         }
@@ -86,6 +90,7 @@ class AthleteController extends Controller
     {
         $data = $request->all();
         $data['active'] = isset($request->active) ? 1 : 0;
+        $data['goalkeeper'] = isset($request->goalkeeper) ? 1 : 0;
         Athlete::findOrFail($request->id)->update($data);
         // toast('Cadastro editado com sucesso!','success');
         return redirect('/athlete/index');

@@ -9,10 +9,11 @@
                 <h2 class="mb-0"><i class="fa fa-running me-2"></i> Atletas</h2>
                 <a href="/athlete/create"><button type="button" class="btn btn-success m-2">Cadastrar</button></a>
             </div>
+            <hr>
             
             @if (count($athletes) > 0)
                 <div class="table-responsive">
-                    <table class="table text-start align-middle table-bordered table-hover mb-0 datatables mt-2">
+                    <table class="table text-start align-middle table-hover mb-0 datatables mt-2">
                         <thead>
                             <tr class="text-dark mb-2">
                                 <th scope="col">Nome</th>
@@ -48,7 +49,6 @@
                     </table>
                 </div>
             @else
-                <hr>
                 <div class="d-flex align-items-center justify-content-between">
                     <h6 class="mb-0">Nenhum atleta cadastrado.</h6>
                 </div>

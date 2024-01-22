@@ -7,7 +7,7 @@
         <div class="col-sm-12 col-xl-12">
             <div class="bg-light rounded h-100 p-4">
                 <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h2 class="mb-0"><i class="fa fa-running me-2"></i>Cadastrar</h2>
+                    <h2 class="mb-0"><i class="fa fa-running me-2"></i>Atleta</h2>
                     <a href="/athlete/index"><button type="button" class="btn btn-primary m-2"><i class="fas fa-arrow-alt-circle-left"></i> Voltar</button></a>
                 </div>
                 <form action="/athlete" method="POST" enctype="multipart/form-data">
@@ -34,6 +34,17 @@
                         <label class="col-sm-4 col-form-label">Data de Nascimento</label>
                         <div class="col-sm-8">
                             <input type="date" class="form-control" name="date_birth">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <legend class="col-form-label col-sm-4 pt-0">Goleiro ?</legend>
+                        <div class="col-sm-8">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="goalkeeper">
+                                <label class="form-check-label">
+                                    Sim / Não
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="row mb-3">

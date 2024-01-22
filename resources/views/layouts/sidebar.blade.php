@@ -15,19 +15,21 @@
                     </div>
                     <div class="navbar-nav w-100">
                         <a href="{{ route('dashboard') }}" class="nav-item nav-link active"><i class="fa fa-home me-2"></i>Principal</a>
-                        <div class="nav-item dropdown">
+                        <!-- <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
                             <div class="dropdown-menu bg-transparent border-0">
                                 <a href="button.html" class="dropdown-item">Buttons</a>
                                 <a href="typography.html" class="dropdown-item">Typography</a>
                                 <a href="element.html" class="dropdown-item">Other Elements</a>
                             </div>
-                        </div>
-                        <a href="athlete/index" class="nav-item nav-link"><i class="fa fa-running me-2"></i>Atletas</a>
-                        <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
-                        <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
-                        <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
-                        <div class="nav-item dropdown">
+                        </div> -->
+                        <a href="/athlete/index" class="nav-item nav-link"><i class="fa fa-running me-2"></i>Atletas</a>
+                        <a href="/oppossing_team/index" class="nav-item nav-link"><i class="fa fa-flag me-2"></i>Times</a>
+                        <a href="/match/index" class="nav-item nav-link"><i class="fa fa-futbol me-2"></i>Partidas</a>
+                        <!-- <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a> -->
+                        <!-- <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a> -->
+                        <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a> -->
+                        <!-- <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                             <div class="dropdown-menu bg-transparent border-0">
                                 <a href="signin.html" class="dropdown-item">Sign In</a>
@@ -35,7 +37,7 @@
                                 <a href="404.html" class="dropdown-item">404 Error</a>
                                 <a href="blank.html" class="dropdown-item">Blank Page</a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 @endauth
                 @guest

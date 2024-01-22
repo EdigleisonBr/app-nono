@@ -14,7 +14,8 @@ class OppossingTeamController extends Controller
      */
     public function index()
     {
-        //
+        $oppossing_teams = OppossingTeam::all();
+        return view('oppossing_team.index', compact('oppossing_teams'));
     }
 
     /**
@@ -24,7 +25,7 @@ class OppossingTeamController extends Controller
      */
     public function create()
     {
-        //
+        return view('oppossing_team.create');
     }
 
     /**
@@ -35,7 +36,18 @@ class OppossingTeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $oppossing_team = new OppossingTeam;
+        $oppossing_team->name = $request->name;
+        $oppossing_team->responsible = $request->responsible;    
+        $oppossing_team->cell_phone = $request->cell_phone; 
+        if ($request->active){
+            $oppossing_team->active = 1;
+        }
+        else{ $oppossing_team->active = 0; }
+        $oppossing_team->save();
+
+        // toast('Cadastro realizado com sucesso!','success');
+        return redirect('/oppossing_team/index');
     }
 
     /**
@@ -44,9 +56,10 @@ class OppossingTeamController extends Controller
      * @param  \App\Models\OppossingTeam  $oppossingTeam
      * @return \Illuminate\Http\Response
      */
-    public function show(OppossingTeam $oppossingTeam)
+    public function show($id)
     {
-        //
+        $oppossing_team = OppossingTeam::findOrFail($id);
+        return view('oppossing_team.show', ['oppossing_team' => $oppossing_team]);
     }
 
     /**
@@ -55,9 +68,10 @@ class OppossingTeamController extends Controller
      * @param  \App\Models\OppossingTeam  $oppossingTeam
      * @return \Illuminate\Http\Response
      */
-    public function edit(OppossingTeam $oppossingTeam)
+    public function edit($id)
     {
-        //
+        $oppossing_team = OppossingTeam::findOrFail($id);
+        return view('oppossing_team.edit', ['oppossing_team' => $oppossing_team]);
     }
 
     /**
@@ -67,9 +81,13 @@ class OppossingTeamController extends Controller
      * @param  \App\Models\OppossingTeam  $oppossingTeam
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OppossingTeam $oppossingTeam)
+    public function update(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['active'] = isset($request->active) ? 1 : 0;
+        OppossingTeam::findOrFail($request->id)->update($data);
+        // toast('Cadastro editado com sucesso!','success');
+        return redirect('/oppossing_team/index');
     }
 
     /**

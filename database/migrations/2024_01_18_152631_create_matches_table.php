@@ -18,8 +18,9 @@ class CreateMatchesTable extends Migration
             $table->string('local');
             $table->date('match_date');
             $table->string('hour');
-            $table->integer('own_goals');
-            $table->integer('goals_in_favor');
+            $table->boolean('no_goal')->default(0);
+            $table->integer('own_goals')->default(0);
+            $table->integer('goals_in_favor')->default(0);
             $table->foreignId('oppossing_team_id')->constrained('oppossing_teams');
             $table->timestamps();
         });

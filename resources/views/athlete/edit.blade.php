@@ -38,6 +38,24 @@
                         </div>
                     </div>
                     <div class="row mb-3">
+                        <legend class="col-form-label col-sm-4 pt-0">Goleiro ?</legend>
+                        <div class="col-sm-8">
+                            <div class="form-check">
+                                @if($athlete->goalkeeper)
+                                    <input class="form-check-input" type="checkbox" name="goalkeeper" checked>
+                                    <label class="form-check-label" >
+                                        Sim
+                                    </label>
+                                @else
+                                    <input class="form-check-input" type="checkbox" name="goalkeeper">
+                                    <label class="form-check-label" >
+                                        Não
+                                    </label>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
                         <legend class="col-form-label col-sm-4 pt-0">Ativo ?</legend>
                         <div class="col-sm-8">
                             <div class="form-check">
