@@ -16,8 +16,8 @@
                     <table class="table text-start align-middle table-hover mb-0 datatables mt-2">
                         <thead>
                             <tr class="text-dark mb-2">
-                                <th scope="col">Nome</th>
-                                <th scope="col">Apelido</th>
+                                <th scope="col">Atlete</th>
+                                <!-- <th scope="col">Apelido</th> -->
                                 <th scope="col">Data de nascimento</th>
                                 <th scope="col">Celular</th>
                                 <th scope="col">Ativo</th>
@@ -27,7 +27,7 @@
                         <tbody>
                             @foreach ($athletes as $athlete)
                                 <tr>
-                                    <td>{{ucfirst($athlete->name)}}</td>
+                                    <!-- <td>{{ucfirst($athlete->name)}}</td> -->
                                     <td>{{$athlete->surname}}</td>
                                     <td>{{date('d/m/Y', strtotime($athlete->date_birth))}}</td>
                                     <td>{{$athlete->cell_phone}}</td>

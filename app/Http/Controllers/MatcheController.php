@@ -118,13 +118,17 @@ class MatcheController extends Controller
      */
     public function update_goals(Request $request)
     {
+        $match = Matche::where('id', $request->match_id)->first();
         if($request->athlete){
             $search_goal = Goal::where('match_id', $request->match_id)->where('athlete_id', $request->athlete)->first();
             if($search_goal){
                 $sum_goal = $search_goal->goals;
+                $match->goals_in_favor += $sum_goal;  
                 $sum_goal += $request->goals_in_favor;
                 $search_goal->goals = $sum_goal;
-                $search_goal->update();   
+                $search_goal->update();
+                $match->goals_in_favor = $sum_goal;  
+                $match->update();
             }
             else{
                 $goal = new Goal();
@@ -132,15 +136,19 @@ class MatcheController extends Controller
                 $goal->athlete_id = $request->athlete;
                 $goal->goals = $request->goals_in_favor; 
                 $goal->save();
+                $match->goals_in_favor += $request->goals_in_favor;
+                $match->update();
             }
         }
         if($request->goalkeeper){
             $search_goal = GoalkeeperGoal::where('match_id', $request->match_id)->where('athlete_id', $request->goalkeeper)->first();
             if($search_goal){
                 $sum_goal = $search_goal->goals;
+                $match->own_goals += $sum_goal;
                 $sum_goal += $request->own_goals;
                 $search_goal->goals = $sum_goal;
                 $search_goal->update(); 
+                $match->update();
             }
             else{
                 $goalkeeper = new GoalkeeperGoal();
@@ -148,6 +156,8 @@ class MatcheController extends Controller
                 $goalkeeper->athlete_id = $request->goalkeeper;
                 $goalkeeper->goals = $request->own_goals;
                 $goalkeeper->save();
+                $match->own_goals = $request->own_goals;
+                $match->update();
             }
         }
               
@@ -164,6 +174,10 @@ class MatcheController extends Controller
     public function delete_goals($id)
     {
         $goal = Goal::findOrFail($id);
+        $match = Matche::where('id', $goal->match_id)->first();
+        $goals = $match->goals_in_favor - $goal->goals;
+        $match->goals_in_favor = $goals;
+        $match->update();
         Goal::where('id', $id)->delete();
         return redirect('/match/edit_goals/'.$goal->match_id);
     }
@@ -176,9 +190,13 @@ class MatcheController extends Controller
      */
     public function delete_goals_goalkeeper($id)
     {
-        $goal = GoalkeeperGoal::findOrFail($id);
+        $goalkeeper = GoalkeeperGoal::findOrFail($id);
+        $match = Matche::where('id', $goalkeeper->match_id)->first();
+        $goals = $match->own_goals - $goalkeeper->goals;
+        $match->own_goals = $goals;
+        $match->update();
         GoalkeeperGoal::where('id', $id)->delete();
-        return redirect('/match/edit_goals/'.$goal->match_id);
+        return redirect('/match/edit_goals/'.$goalkeeper->match_id);
     }
 
     /**

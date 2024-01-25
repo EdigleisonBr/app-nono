@@ -23,23 +23,11 @@
                         </thead>
                         <tbody>
                             @foreach($matches as $match)
-                                @php
-                                    $sum_goals_in_favor = App\Models\Goal::where('match_id', $match->id)->sum('goals');
-                                    $sum_own_goals = App\Models\GoalkeeperGoal::where('match_id', $match->id)->sum('goals');
-                                @endphp     
                                 <tr>
                                     <td class="border border-secondary ml-0 mr-0">{{date('d/m/Y', strtotime($match->match_date))}}</td>
                                     <td class="text-center fw-bold bg-info border border-secondary">Nonô FC</td>
-                                    @if($sum_goals_in_favor >= 0)
-                                        <td class="text-center fw-bold bg-info border border-secondary">{{$sum_goals_in_favor}}</td>
-                                    @else
-                                        <td class="text-center fw-bold bg-info border border-secondary">-</td>
-                                    @endif
-                                    @if($sum_own_goals >= 0)
-                                        <td class="text-center fw-bold bg-warning border border-secondary">{{$sum_own_goals}}</td>
-                                    @else
-                                        <td class="text-center fw-bold bg-warning border border-secondary">-</td>
-                                    @endif
+                                    <td class="text-center fw-bold bg-info border border-secondary">{{$match->goals_in_favor}}</td>
+                                    <td class="text-center fw-bold bg-warning border border-secondary">{{$match->own_goals}}</td>
                                     <td class="text-center fw-bold bg-warning border border-secondary">{{$match->team->name}}</td>
                                     <td class="border border-secondary text-center">Casa</td>
                                     <td class="border border-secondary text-center">

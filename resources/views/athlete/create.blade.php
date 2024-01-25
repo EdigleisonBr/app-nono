@@ -15,19 +15,19 @@
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Nome</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="name">
+                            <input type="text" class="form-control" name="name" placeholder="Nome do atleta">
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Apelido</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="surname">
+                            <input type="text" class="form-control" name="surname" placeholder="Apelido do atleta">
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Celular</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="cell_phone">
+                            <input type="text" class="form-control" data-mask="00000-0000" name="cell_phone" placeholder="00000-0000">
                         </div>
                     </div>
                     <div class="row mb-2">

@@ -17,8 +17,7 @@
                         <thead>
                             <tr class="text-dark mb-2">
                                 <th scope="col">Nome</th>
-                                <th scope="col">Apelido</th>
-                                <th scope="col">Data de nascimento</th>
+                                <th scope="col">Responsável</th>
                                 <th scope="col">Celular</th>
                                 <th scope="col">Ativo</th>
                                 <th scope="col">Ações</th>
@@ -28,8 +27,7 @@
                             @foreach ($oppossing_teams as $oppossing_team)
                                 <tr>
                                     <td>{{ucfirst($oppossing_team->name)}}</td>
-                                    <td>{{$oppossing_team->surname}}</td>
-                                    <td>{{date('d/m/Y', strtotime($oppossing_team->date_birth))}}</td>
+                                    <td>{{ucfirst($oppossing_team->responsible)}}</td>
                                     <td>{{$oppossing_team->cell_phone}}</td>
                                     @if($oppossing_team->active == 1)
                                         <td class="text-primary">Sim</td>

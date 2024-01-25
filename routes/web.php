@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AthleteController;
 use App\Http\Controllers\OppossingTeamController;
 use App\Http\Controllers\MatcheController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,10 +42,10 @@ Route::put('/match/update_goals/{id}', [MatcheController::class, 'update_goals']
 Route::get('/match/delete_goals/{id}', [MatcheController::class, 'delete_goals']);
 Route::get('/match/delete_goals_goalkeeper/{id}', [MatcheController::class, 'delete_goals_goalkeeper']);
 
-
-Route::get('/', function () {
-    return view('dashboard');
-});
+Route::get('/', [DashboardController::class, 'index']);
+// Route::get('/', function () {
+//     return view('dashboard');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');

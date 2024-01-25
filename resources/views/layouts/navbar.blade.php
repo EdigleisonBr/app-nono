@@ -3,6 +3,9 @@
     <a href="#" class="sidebar-toggler flex-shrink-0">
         <i class="fa fa-bars"></i>
     </a>
+    <form class="d-md-flex ms-4">
+        <input class="form-control border-0 fw-bold bg-light" type="text" placeholder="TEMPORADA 2024" disabled>
+    </form>
     
     <div class="navbar-nav align-items-center ms-auto">
         @auth

@@ -130,6 +130,10 @@
     <!-- select2 -->
     <script src="{{ asset('../assets/vendor/select2/dist/js/select2.min.js') }}"></script>
 
+    <!-- JQuery Mask -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
     <!-- Template Javascript -->
     <script src="{{ asset('../assets/js/main.js') }}"></script>
     

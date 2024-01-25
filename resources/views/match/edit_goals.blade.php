@@ -68,7 +68,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="w-100 mt-1 btn btn-outline-success">
+                    <button type="submit" class="w-100 mt-1 btn btn-primary">
                         <i class="far fa-save text-ligth"></i> 
                         Clique para salvar os gols
                     </button>
@@ -78,64 +78,68 @@
                 <div class="row g-1 mt-1">
                     <div class="col-sm-12 col-xl-6 bg-success p-1 rounded-bottom text-white border border-dark">
                         <div class="text-center">
-                            <h2 class="text-white"><i class="far fa-futbol"></i></h2>
+                            <h2 class="text-white">{{$match->goals_in_favor}}</i></h2>
                         </div>
                         <hr>
-                        <div class="h-100">
-                            <table class="table text-white">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Nome</th>
-                                        <th scope="col">Gols</th>
-                                        <th scope="col">Remover</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($goals_in_favor as $favor)
+                        @if(count($goals_in_favor) > 0)
+                            <div class="h-100">
+                                <table class="table text-white">
+                                    <thead>
                                         <tr>
-                                            <td>{{$favor->athlete->surname}}</td>
-                                            <td>{{$favor->goals}}</td>
-                                            <td>
-                                                <form action="/match/delete_goals/{{$favor->id}}" method="GET" enctype="multipart/form-data">
-                                                    <button class="btn" type="submit"><i class="fas fa-trash-alt text-warning"></i></button>
-                                                </form>
-                                            </td>
+                                            <th scope="col">Nome</th>
+                                            <th scope="col">Gols</th>
+                                            <th scope="col">Remover</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($goals_in_favor as $favor)
+                                            <tr>
+                                                <td>{{$favor->athlete->surname}}</td>
+                                                <td>{{$favor->goals}}</td>
+                                                <td>
+                                                    <form action="/match/delete_goals/{{$favor->id}}" method="GET" enctype="multipart/form-data">
+                                                        <button class="btn" type="submit"><i class="fas fa-trash-alt text-warning"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
                     </div>
 
                     <div class="col-sm-12 col-xl-6 bg-danger p-1 rounded-bottom text-white border border-dark">
                         <div class="text-center">
-                            <h2 class="text-white"><i class="far fa-futbol"></i></h2>
+                            <h2 class="text-white">{{$match->own_goals}}</h2>
                         </div>
                         <hr>
-                        <div class="h-100">
-                            <table class="table text-white">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Nome</th>
-                                        <th scope="col">Gols</th>
-                                        <th scope="col">Remover</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($own_goals as $own)
+                        @if(count($own_goals) > 0)
+                            <div class="h-100">
+                                <table class="table text-white">
+                                    <thead>
                                         <tr>
-                                            <td>{{$own->athlete->surname}}</td>
-                                            <td>{{$own->goals}}</td>
-                                            <td>
-                                                <form action="/match/delete_goals_goalkeeper/{{$own->id}}" method="GET" enctype="multipart/form-data">
-                                                    <button class="btn" type="submit"><i class="fas fa-trash-alt text-warning"></i></button>
-                                                </form>
-                                            </td>
+                                            <th scope="col">Nome</th>
+                                            <th scope="col">Gols</th>
+                                            <th scope="col">Remover</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($own_goals as $own)
+                                            <tr>
+                                                <td>{{$own->athlete->surname}}</td>
+                                                <td>{{$own->goals}}</td>
+                                                <td>
+                                                    <form action="/match/delete_goals_goalkeeper/{{$own->id}}" method="GET" enctype="multipart/form-data">
+                                                        <button class="btn" type="submit"><i class="fas fa-trash-alt text-warning"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
