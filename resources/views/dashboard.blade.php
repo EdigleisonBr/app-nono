@@ -2,268 +2,198 @@
 @section('title', 'Dashboard | Admin')
 @section('content')
 
-<!-- Sale & Revenue Start -->
+<!-- Cards -->
 <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-line fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Today Sale</p>
-                                <h6 class="mb-0">$1234</h6>
-                            </div>
-                        </div>
+    <div class="row g-4">
+        <div class="col-sm-6 col-xl-4">
+            <div class="bg-primary rounded d-flex align-items-center justify-content-between p-4">
+                @if($goals == False)
+                    <h1 class="display-2 text-white">0</h1>
+                    <div class="ms-3">
+                        <h6 class="text-white">ARTILHEIRO</h6>
+                        <h6 class="">?</h6>
                     </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Total Sale</p>
-                                <h6 class="mb-0">$1234</h6>
-                            </div>
-                        </div>
+                @else
+                    <h1 class="display-2 text-white">{{$goals}}</h1>
+                    <div class="ms-3">
+                        <h6 class="text-white">ARTILHEIRO</h6>
+                        <h6 class="">{{strtoupper($name)}}</h6>
                     </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-area fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Today Revenue</p>
-                                <h6 class="mb-0">$1234</h6>
-                            </div>
-                        </div>
+                @endif
+            </div>
+        </div>
+        @php
+            $now = date('d/m/y', strtotime(Carbon\Carbon::now()));
+        @endphp
+        <!-- <div class="col-sm-6 col-xl-4">
+            <div class="bg-info rounded d-flex align-items-center justify-content-between p-4">
+                <h1 class="display-2 text-white">{{$count_matches}}</h1>
+                <div class="ms-3">
+                    <h6 class="text-white">QUANTIDADE DE</h6>
+                    <h6 class="">JOGOS</h6>
+                </div>
+            </div>
+        </div> -->
+        <div class="col-sm-6 col-xl-4">
+            <div class="rounded d-flex align-items-center justify-content-between p-4" style="background: #00FA9A">
+                <h1 class="display-2 text-white">{{$sum_goals_in_favor}}</h1>
+                <div class="ms-3">
+                    <h6 class="text-white">GOLS</h6>
+                    <h6 class="">FEITOS</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-4">
+            <div class="rounded d-flex align-items-center justify-content-between p-4" style="background: #FF7F50">
+                <h1 class="display-2 text-white">{{$sum_own_goals}}</h1>
+                <div class="ms-3">
+                    <h6 class="text-white">GOLS</h6>
+                    <h6 class="">TOMADOS</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xl-3">
+            <div class="rounded d-flex align-items-center justify-content-between p-4 bg-warning">
+                <h5 class="mb-0">{{$count_matches}}</h5>
+                <h5 class="mb-0">Jogos</h5>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xl-3">
+            <div class="rounded d-flex align-items-center justify-content-between p-4" style="background: #00FA9A">
+                <h5 class="mb-0">{{$victory}}</h5>
+                <h5 class="mb-0">Vitórias</h5>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xl-3">
+            <div class="rounded d-flex align-items-center justify-content-between p-4 bg-light">
+                <h5 class="mb-0">{{$equal}}</h5>
+                <h5 class="mb-0">Empates</h5>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xl-3">
+            <div class="rounded d-flex align-items-center justify-content-between p-4" style="background: #FF7F50">
+                <h5 class="mb-0">{{$loss}}</h5>
+                <h5 class="mb-0">Derrotas</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cards End -->
+
+<!-- Jogos Start -->
+<div class="container-fluid pt-4 px-4 border rounded mt-4">
+    <div class="mb-4 text-center">
+        <h5 class="mb-0"><i class="fas fa-star text-warning"></i> Jogos</h5>
+    </div>
+    @if(count($matches) > 0)
+        @foreach($matches as $match)
+            <div class="row g-1 mb-2 border border-dark rounded bg-light">
+                <div class="col-sm-12 col-xl-12">
+                    <div class="bg-light rounded d-flex align-items-center justify-content-between p-2">
+                        <h6 class="text-dark mb-0"><i class="far fa-calendar-alt"></i> {{date('d/m/y', strtotime($match->match_date))}}</h6>
+                        @if($match->local == 'casa')
+                            <h6 class="text-dark mb-0"><i class="fas fa-home"></i></h6>
+                        @endif
                     </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-pie fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Total Revenue</p>
-                                <h6 class="mb-0">$1234</h6>
-                            </div>
+                    @if($match->goals_in_favor > $match->own_goals) 
+                    <div class="rounded d-flex align-items-center justify-content-between p-4" style="background: #00FA9A">
+                    @elseif($match->goals_in_favor < $match->own_goals)
+                    <div class="rounded d-flex align-items-center justify-content-between p-4" style="background: #FF7F50">
+                    @else
+                    <div class="rounded d-flex align-items-center justify-content-between p-4 border">
+                    @endif
+                        <div class="ms-2 text-center">
+                            <h6>Nonô FC</h6>
+                            <h5>{{$match->goals_in_favor}}</h5>
+                        </div>
+                        <div class="ms-2">
+                            <h1 class="display-2">X</h1>
+                        </div>
+                        <div class="ms-2 text-center">
+                            <h6>{{$match->team->name}}</h6>
+                            <h5>{{$match->own_goals}}</h5>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Sale & Revenue End -->
+        @endforeach
+    @else
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Nenhum jogo cadastrado até o momento.</h6>
+        </div>
+    @endif
+</div>
+<!-- Jogos End -->
 
-
-            <!-- Sales Chart Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Worldwide Sales</h6>
-                                <a href="">Show All</a>
-                            </div>
-                            <canvas id="worldwide-sales"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Salse & Revenue</h6>
-                                <a href="">Show All</a>
-                            </div>
-                            <canvas id="salse-revenue"></canvas>
-                        </div>
-                    </div>
+<!-- Artilheiros e Aniversários -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0"><i class="fas fa-medal"></i> Artilheiros</h6>
                 </div>
-            </div>
-            <!-- Sales Chart End -->
-
-
-            <!-- Recent Sales Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-light text-center rounded p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Recent Salse</h6>
-                        <a href="">Show All</a>
-                    </div>
+                @if(count($gunners) > 0)
                     <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                        <table class="table text-start align-middle table-bordered border-dark table-hover mb-0 text-dark">
                             <thead>
                                 <tr class="text-dark">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Invoice</th>
-                                    <th scope="col">Customer</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col" class="text-center"><i class="fas fa-medal"></i></th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Gols</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
+                                @foreach($gunners as $gunner)
+                                    <tr>
+                                        <td class="text-center fw-bold">{{$loop->index+1}}º</td>
+                                        <td>{{$gunner->athlete->surname}}</td>
+                                        <td>{{$gunner->goal}}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
-                </div>
+                @else
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Nenhum artilheiro té o momento.</h6>
+                    </div>
+                @endif
             </div>
-            <!-- Recent Sales End -->
+        </div>
 
-
-            <!-- Widgets Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-md-6 col-xl-4">
-                        <div class="h-100 bg-light rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-2">
-                                <h6 class="mb-0">Messages</h6>
-                                <a href="">Show All</a>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                    <span>Short message goes here...</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                    <span>Short message goes here...</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                    <span>Short message goes here...</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center pt-3">
-                                <img class="rounded-circle flex-shrink-0" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                    <span>Short message goes here...</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-xl-4">
-                        <div class="h-100 bg-light rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Calender</h6>
-                                <a href="">Show All</a>
-                            </div>
-                            <div id="calender"></div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-xl-4">
-                        <div class="h-100 bg-light rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">To Do List</h6>
-                                <a href="">Show All</a>
-                            </div>
-                            <div class="d-flex mb-2">
-                                <input class="form-control bg-transparent" type="text" placeholder="Enter task">
-                                <button type="button" class="btn btn-primary ms-2">Add</button>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-2">
-                                <input class="form-check-input m-0" type="checkbox">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 align-items-center justify-content-between">
-                                        <span>Short task goes here...</span>
-                                        <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-2">
-                                <input class="form-check-input m-0" type="checkbox">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 align-items-center justify-content-between">
-                                        <span>Short task goes here...</span>
-                                        <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-2">
-                                <input class="form-check-input m-0" type="checkbox" checked>
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 align-items-center justify-content-between">
-                                        <span><del>Short task goes here...</del></span>
-                                        <button class="btn btn-sm text-primary"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-2">
-                                <input class="form-check-input m-0" type="checkbox">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 align-items-center justify-content-between">
-                                        <span>Short task goes here...</span>
-                                        <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center pt-2">
-                                <input class="form-check-input m-0" type="checkbox">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 align-items-center justify-content-between">
-                                        <span>Short task goes here...</span>
-                                        <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0"><i class="fas fa-birthday-cake"></i> Aniversários de {{$month_}}</h6>
                 </div>
+                @if(count($birthdays) > 0)
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered border-dark table-hover mb-0 text-dark">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Dia</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($birthdays as $birthday)
+                                    <tr>
+                                        <td>{{$birthday->surname}}</td>
+                                        <td>{{date('d/m', strtotime($birthday->date_birth))}}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @else
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Ninguém faz aniversário neste mês.</h6>
+                    </div>
+                @endif
             </div>
-            <!-- Widgets End -->
+        </div>
+    </div>
+</div>
+<!-- Artilheiros e Aniversários End -->
 @endsection
