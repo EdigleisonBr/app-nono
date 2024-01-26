@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DASHMIN - Bootstrap Admin Template</title>
+    <title>Login</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -42,7 +42,6 @@
         </div>
         <!-- Spinner End -->
 
-
         <!-- Sign In Start -->
         <div class="container-fluid">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
@@ -51,6 +50,13 @@
                         <div class="text-center mb-3">
                             <button type="button" class="btn btn-lg btn-lg-square btn-primary m-2"><i class="fa fa-key"></i></button>
                         </div>
+                        
+                        <!-- Session Status -->
+                        <x-auth-session-status class="mb-4" :status="session('status')" />
+
+                        <!-- Validation Errors -->
+                        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                        
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-floating mb-3">
