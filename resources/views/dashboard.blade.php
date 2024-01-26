@@ -25,15 +25,6 @@
         @php
             $now = date('d/m/y', strtotime(Carbon\Carbon::now()));
         @endphp
-        <!-- <div class="col-sm-6 col-xl-4">
-            <div class="bg-info rounded d-flex align-items-center justify-content-between p-4">
-                <h1 class="display-2 text-white">{{$count_matches}}</h1>
-                <div class="ms-3">
-                    <h6 class="text-white">QUANTIDADE DE</h6>
-                    <h6 class="">JOGOS</h6>
-                </div>
-            </div>
-        </div> -->
         <div class="col-sm-6 col-xl-4">
             <div class="rounded d-flex align-items-center justify-content-between p-4" style="background: #00FA9A">
                 <h1 class="display-2 text-white">{{$sum_goals_in_favor}}</h1>

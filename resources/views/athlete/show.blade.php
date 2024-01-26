@@ -39,7 +39,7 @@
                     <legend class="col-form-label col-sm-4 pt-0">Goleiro ?</legend>
                     <div class="col-sm-8">
                         <div class="form-check">
-                            @if($athlete->active)
+                            @if($athlete->goalkeeper == 1)
                                 <input class="form-check-input" type="checkbox" name="goalkeeper" checked disabled>
                                 <label class="form-check-label" >
                                     Sim
