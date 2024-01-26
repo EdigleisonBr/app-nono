@@ -83,7 +83,7 @@
                     <div class="bg-light rounded d-flex align-items-center justify-content-between p-2">
                         <h6 class="text-dark mb-0"><i class="far fa-calendar-alt"></i> {{date('d/m/y', strtotime($match->match_date))}}</h6>
                         @if($match->local == 'casa')
-                            <h6 class="text-dark mb-0"><i class="fas fa-home"></i></h6>
+                            <h6 class="text-dark mb-0"><i class="fas fa-home text-primary"></i></h6>
                         @endif
                     </div>
                     @if($match->goals_in_favor > $match->own_goals) 
