@@ -18,29 +18,29 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/athlete/index', [AthleteController::class, 'index']);
-Route::get('/athlete/create', [AthleteController::class, 'create']);
-Route::post('/athlete', [AthleteController::class, 'store']);
-Route::get('/athlete/edit/{id}', [AthleteController::class, 'edit']);
-Route::put('/athlete/update/{id}', [AthleteController::class, 'update']);
-Route::get('/athlete/show/{id}', [AthleteController::class, 'show']);
+Route::get('/athlete/index', [AthleteController::class, 'index'])->middleware('auth');
+Route::get('/athlete/create', [AthleteController::class, 'create'])->middleware('auth');
+Route::post('/athlete', [AthleteController::class, 'store'])->middleware('auth');
+Route::get('/athlete/edit/{id}', [AthleteController::class, 'edit'])->middleware('auth');
+Route::put('/athlete/update/{id}', [AthleteController::class, 'update'])->middleware('auth');
+Route::get('/athlete/show/{id}', [AthleteController::class, 'show'])->middleware('auth');
 
-Route::get('/oppossing_team/index', [OppossingTeamController::class, 'index']);
-Route::get('/oppossing_team/create', [OppossingTeamController::class, 'create']);
-Route::post('/oppossing_team', [OppossingTeamController::class, 'store']);
-Route::get('/oppossing_team/edit/{id}', [OppossingTeamController::class, 'edit']);
-Route::put('/oppossing_team/update/{id}', [OppossingTeamController::class, 'update']);
-Route::get('/oppossing_team/show/{id}', [OppossingTeamController::class, 'show']);
+Route::get('/oppossing_team/index', [OppossingTeamController::class, 'index'])->middleware('auth');
+Route::get('/oppossing_team/create', [OppossingTeamController::class, 'create'])->middleware('auth');
+Route::post('/oppossing_team', [OppossingTeamController::class, 'store'])->middleware('auth');
+Route::get('/oppossing_team/edit/{id}', [OppossingTeamController::class, 'edit'])->middleware('auth');
+Route::put('/oppossing_team/update/{id}', [OppossingTeamController::class, 'update'])->middleware('auth');
+Route::get('/oppossing_team/show/{id}', [OppossingTeamController::class, 'show'])->middleware('auth');
 
-Route::get('/match/index', [MatcheController::class, 'index']);
-Route::get('/match/create', [MatcheController::class, 'create']);
-Route::post('/match', [MatcheController::class, 'store']);
-Route::get('/match/edit/{id}', [MatcheController::class, 'edit']);
-Route::put('/match/update/{id}', [MatcheController::class, 'update']);
-Route::get('/match/edit_goals/{id}', [MatcheController::class, 'edit_goals']);
-Route::put('/match/update_goals/{id}', [MatcheController::class, 'update_goals']);
-Route::get('/match/delete_goals/{id}', [MatcheController::class, 'delete_goals']);
-Route::get('/match/delete_goals_goalkeeper/{id}', [MatcheController::class, 'delete_goals_goalkeeper']);
+Route::get('/match/index', [MatcheController::class, 'index'])->middleware('auth');
+Route::get('/match/create', [MatcheController::class, 'create'])->middleware('auth');
+Route::post('/match', [MatcheController::class, 'store'])->middleware('auth');
+Route::get('/match/edit/{id}', [MatcheController::class, 'edit'])->middleware('auth');
+Route::put('/match/update/{id}', [MatcheController::class, 'update'])->middleware('auth');
+Route::get('/match/edit_goals/{id}', [MatcheController::class, 'edit_goals'])->middleware('auth');
+Route::put('/match/update_goals/{id}', [MatcheController::class, 'update_goals'])->middleware('auth');
+Route::get('/match/delete_goals/{id}', [MatcheController::class, 'delete_goals'])->middleware('auth');
+Route::get('/match/delete_goals_goalkeeper/{id}', [MatcheController::class, 'delete_goals_goalkeeper'])->middleware('auth');
 
 Route::get('/', [DashboardController::class, 'index']);
 // Route::get('/', function () {
