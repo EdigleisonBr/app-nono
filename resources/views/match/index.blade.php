@@ -29,7 +29,7 @@
                                     <td class="text-center fw-bold bg-info border border-secondary">{{$match->goals_in_favor}}</td>
                                     <td class="text-center fw-bold bg-warning border border-secondary">{{$match->own_goals}}</td>
                                     <td class="text-center fw-bold bg-warning border border-secondary">{{$match->team->name}}</td>
-                                    <td class="border border-secondary text-center">Casa</td>
+                                    <td class="border border-secondary text-center">{{ucfirst($match->local)}}</td>
                                     <td class="border border-secondary text-center">
                                         <div class="btn-group" role="group">
                                             {{-- <a href=""><button type="button" class="btn btn-sm btn-danger me-1"><i class="fas fa-trash-alt text-dark"></i></button></a> --}}

@@ -18,14 +18,14 @@ class AthleteTableSeeder extends Seeder
     {
         \App\Models\Athlete::insert(
             [
-                // [
-                //     'name' => 'Rener',
-                //     'surname' => 'Renin',
-                //     'birthName' => '1989-07-07',
-                //     'cell' => '16994231391',
-                //     'active' => 1,
-                //     'userId' => 1,
-                // ],
+                [
+                    'name' => 'Rener',
+                    'surname' => 'Renin',
+                    'date_birth' => '1989-07-07',
+                    'cell_phone' => '99423-1391',
+                    'active' => 1,
+                    'goalkeeper' => 1,
+                ],
                 [ 
                     'name' => 'Pelézin',
                     'surname' => 'Pelézin',
@@ -186,22 +186,22 @@ class AthleteTableSeeder extends Seeder
                     'active' => 1,
                     'goalkeeper' => 0,
                 ],
-                [
-                    'name' => 'Jealison Santos',
-                    'surname' => 'Jê',
-                    'date_birth' => '1993-08-23',
-                    'cell_phone' => '99408-2272',
-                    'active' => 1,
-                    'goalkeeper' => 0,
-                ],
-                [
-                    'name' => 'Cleverson Santos',
-                    'surname' => 'Clevin',
-                    'date_birth' => '1987-07-02',
-                    'cell_phone' => '99223-8606',
-                    'active' => 1,
-                    'goalkeeper' => 0,
-                ],
+                // [
+                //     'name' => 'Jealison Santos',
+                //     'surname' => 'Jê',
+                //     'date_birth' => '1993-08-23',
+                //     'cell_phone' => '99408-2272',
+                //     'active' => 1,
+                //     'goalkeeper' => 0,
+                // ],
+                // [
+                //     'name' => 'Cleverson Santos',
+                //     'surname' => 'Clevin',
+                //     'date_birth' => '1987-07-02',
+                //     'cell_phone' => '99223-8606',
+                //     'active' => 1,
+                //     'goalkeeper' => 0,
+                // ],
                 [
                     'name' => 'Murilo Guilherme',
                     'surname' => 'Murilo',
