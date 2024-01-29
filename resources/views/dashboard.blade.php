@@ -43,26 +43,26 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-xl-3">
-            <div class="rounded d-flex align-items-center justify-content-between p-4 bg-warning">
+        <div class="col-sm-12 col-xl-3 col-6">
+            <div class="rounded d-flex align-items-center justify-content-between p-3 bg-warning">
                 <h5 class="mb-0">{{$count_matches}}</h5>
                 <h5 class="mb-0">Jogos</h5>
             </div>
         </div>
-        <div class="col-sm-12 col-xl-3">
-            <div class="rounded d-flex align-items-center justify-content-between p-4" style="background: #00FA9A">
+        <div class="col-sm-12 col-xl-3 col-6">
+            <div class="rounded d-flex align-items-center justify-content-between p-3" style="background: #00FA9A">
                 <h5 class="mb-0">{{$victory}}</h5>
                 <h5 class="mb-0">Vitórias</h5>
             </div>
         </div>
-        <div class="col-sm-12 col-xl-3">
-            <div class="rounded d-flex align-items-center justify-content-between p-4 bg-light">
+        <div class="col-sm-12 col-xl-3 col-6">
+            <div class="rounded d-flex align-items-center justify-content-between p-3 bg-light">
                 <h5 class="mb-0">{{$equal}}</h5>
                 <h5 class="mb-0">Empates</h5>
             </div>
         </div>
-        <div class="col-sm-12 col-xl-3">
-            <div class="rounded d-flex align-items-center justify-content-between p-4" style="background: #FF7F50">
+        <div class="col-sm-12 col-xl-3 col-6">
+            <div class="rounded d-flex align-items-center justify-content-between p-3" style="background: #FF7F50">
                 <h5 class="mb-0">{{$loss}}</h5>
                 <h5 class="mb-0">Derrotas</h5>
             </div>
