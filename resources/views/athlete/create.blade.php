@@ -15,25 +15,25 @@
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Nome</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="name" placeholder="Nome do atleta">
+                            <input type="text" class="form-control" name="name" placeholder="Nome do atleta" required>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Apelido</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="surname" placeholder="Apelido do atleta">
+                            <input type="text" class="form-control" name="surname" placeholder="Apelido do atleta" required>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Celular</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" data-mask="00000-0000" name="cell_phone" placeholder="00000-0000">
+                            <input type="text" class="form-control" data-mask="00000-0000" name="cell_phone" placeholder="00000-0000" required>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Data de Nascimento</label>
                         <div class="col-sm-8">
-                            <input type="date" class="form-control" name="date_birth">
+                            <input type="date" class="form-control" name="date_birth" required>
                         </div>
                     </div>
                     <div class="row mb-3">

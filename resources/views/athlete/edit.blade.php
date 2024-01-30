@@ -16,25 +16,25 @@
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Nome</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="name" value="{{$athlete->name}}">
+                            <input type="text" class="form-control" name="name" value="{{$athlete->name}}" required>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Apelido</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="surname" value="{{$athlete->surname}}">
+                            <input type="text" class="form-control" name="surname" value="{{$athlete->surname}}" required>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Celular</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="cell_phone" value="{{$athlete->cell_phone}}">
+                            <input type="text" class="form-control" name="cell_phone" value="{{$athlete->cell_phone}}" required>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Data de Nascimento</label>
                         <div class="col-sm-8">
-                            <input type="date" class="form-control" name="date_birth" value="{{$athlete->date_birth}}">
+                            <input type="date" class="form-control" name="date_birth" value="{{$athlete->date_birth}}" required>
                         </div>
                     </div>
                     <div class="row mb-3">
