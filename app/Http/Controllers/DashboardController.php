@@ -26,7 +26,7 @@ class DashboardController extends Controller
 
         // Aniversários
         $month = date('m');
-        $birthdays = Athlete::whereMonth('date_birth', $month)->orderBy('date_birth', 'asc')->get();    
+        $birthdays = Athlete::whereMonth('date_birth', $month)->orderByRaw('day(date_birth) asc')->get();    
                 
         // Artilheiros
         $gunners = Goal::select(
