@@ -18,7 +18,7 @@ class MatcheController extends Controller
      */
     public function index()
     {
-        $matches = Matche::all();
+        $matches = Matche::orderBy('match_date', 'desc')->get();
         return view('match.index', compact('matches'));
     }
 
