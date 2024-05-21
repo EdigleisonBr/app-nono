@@ -80,25 +80,38 @@
         @foreach($matches as $match)
             <div class="row g-1 mb-2 border border-dark rounded bg-light">
                 <div class="col-sm-12 col-xl-12">
+                    
+                    @if($match->goals_in_favor > $match->own_goals) 
+                    <div class="rounded d-flex align-items-center justify-content-between p-2" style="background: #00FA9A">
+                        <h6 class="text-dark mb-0"><i class="far fa-calendar-alt"></i> {{date('d/m/y', strtotime($match->match_date))}}</h6>
+                        @if($match->local == 'casa')
+                            <h6 class="text-dark mb-0"><i class="fas fa-home text-primary"></i></h6>
+                        @endif
+                    </div>
+                    @elseif($match->goals_in_favor < $match->own_goals)
+                    <div class="rounded d-flex align-items-center justify-content-between p-2" style="background: #FF7F50">
+                        <h6 class="text-dark mb-0"><i class="far fa-calendar-alt"></i> {{date('d/m/y', strtotime($match->match_date))}}</h6>
+                        @if($match->local == 'casa')
+                            <h6 class="text-dark mb-0"><i class="fas fa-home text-primary"></i></h6>
+                        @endif
+                    </div>
+                    @else
                     <div class="bg-light rounded d-flex align-items-center justify-content-between p-2">
                         <h6 class="text-dark mb-0"><i class="far fa-calendar-alt"></i> {{date('d/m/y', strtotime($match->match_date))}}</h6>
                         @if($match->local == 'casa')
                             <h6 class="text-dark mb-0"><i class="fas fa-home text-primary"></i></h6>
                         @endif
                     </div>
-                    @if($match->goals_in_favor > $match->own_goals) 
-                    <div class="rounded d-flex align-items-center justify-content-between p-4" style="background: #00FA9A">
-                    @elseif($match->goals_in_favor < $match->own_goals)
-                    <div class="rounded d-flex align-items-center justify-content-between p-4" style="background: #FF7F50">
-                    @else
-                    <div class="rounded d-flex align-items-center justify-content-between p-4 border">
                     @endif
+
+                    <div class="bg-white rounded d-flex align-items-center justify-content-between p-4 border">
                         <div class="ms-2 text-center">
-                            <h6>Nonô FC</h6>
+                            <img src="../assets/img/nono-logo.png" alt="" style="width: 50px; height: 50px;">
+                            <!-- <h6>Nonô FC</h6> -->
                             <h5>{{$match->goals_in_favor}}</h5>
                         </div>
                         <div class="ms-2">
-                            <h1 class="display-2">X</h1>
+                            <h1 class="display-2"><i class="fas fa-times"></i></h1>
                         </div>
                         <div class="ms-2 text-center">
                             <h6>{{$match->team->name}}</h6>
@@ -137,9 +150,18 @@
                             <tbody>
                                 @foreach($gunners as $gunner)
                                     <tr>
-                                        <td class="text-center fw-bold">{{$loop->index+1}}º</td>
-                                        <td>{{$gunner->athlete->surname}}</td>
-                                        <td>{{$gunner->goal}}</td>
+                                        @if ($loop->index == 0)
+                                            <td class="bg-warning text-center fw-bold">{{$loop->index+1}}º</td>
+                                            <td class="bg-warning fw-bold">{{$gunner->athlete->surname}}</td>
+                                            <td class="bg-warning fw-bold">
+                                                {{$gunner->goal}} 
+                                                <i class="fas fa-heart text-danger"></i> Nonô ama!
+                                            </td>
+                                        @else
+                                            <td class="text-center fw-bold">{{$loop->index+1}}º</td>
+                                            <td>{{$gunner->athlete->surname}}</td>
+                                            <td>{{$gunner->goal}}</td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>
