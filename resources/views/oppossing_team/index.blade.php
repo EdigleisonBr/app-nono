@@ -16,24 +16,26 @@
                     <table class="table text-start align-middle table-hover mb-0 datatables mt-2">
                         <thead>
                             <tr class="text-dark mb-2">
+                                <th scope="col">Escudo</th>
                                 <th scope="col">Nome</th>
                                 <th scope="col">Responsável</th>
                                 <th scope="col">Celular</th>
-                                <th scope="col">Ativo</th>
                                 <th scope="col">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($oppossing_teams as $oppossing_team)
-                                <tr>
+                                <tr class="bg-white">
+                                    <td>
+                                        @if($oppossing_team->image == NULL)
+                                            <img src="../assets/img/empty.png" class="mb-1" style="width: 60px; height: 60px;">
+                                        @else
+                                            <img src="../assets/img/{{$oppossing_team->image}}" class="mb-1" style="width: 60px; height: 60px;">
+                                        @endif
+                                    </td>
                                     <td>{{ucfirst($oppossing_team->name)}}</td>
                                     <td>{{ucfirst($oppossing_team->responsible)}}</td>
                                     <td>{{$oppossing_team->cell_phone}}</td>
-                                    @if($oppossing_team->active == 1)
-                                        <td class="text-primary">Sim</td>
-                                    @else
-                                        <td class="text-warning">Não</td>
-                                    @endif
                                     <td>
                                         <div class="btn-group" role="group">
                                             <a href=""><button type="button" class="btn btn-sm btn-danger me-1"><i class="fas fa-trash-alt text-dark"></i></button></a>

@@ -106,8 +106,8 @@
 
                     <div class="bg-white rounded d-flex align-items-center justify-content-between p-4 border">
                         <div class="ms-2 text-center">
-                            <img src="../assets/img/nono-logo.png" alt="" style="width: 50px; height: 50px;">
-                            <!-- <h6>Nonô FC</h6> -->
+                            <h6>Nonô FC</h6>
+                            <img src="../assets/img/nono-logo.png" class="mb-1" style="width: 60px; height: 60px;">
                             <h5>{{$match->goals_in_favor}}</h5>
                         </div>
                         <div class="ms-2">
@@ -115,6 +115,11 @@
                         </div>
                         <div class="ms-2 text-center">
                             <h6>{{$match->team->name}}</h6>
+                            @if ($match->team->image == NULL)
+                                <img src="../assets/img/empty.png" class="mb-1" style="width: 60px; height: 60px;">
+                            @else
+                                <img src="../assets/img/{{$match->team->image}}" class="mb-1" style="width: 60px; height: 60px;">
+                            @endif    
                             <h5>{{$match->own_goals}}</h5>
                         </div>
                     </div>

@@ -17,6 +17,7 @@ class CreateOppossingTeamsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('responsible');
+            $table->string('image')->nullable();
             $table->string('cell_phone')->nullable();
             $table->boolean('active')->default(1);
             $table->timestamps();

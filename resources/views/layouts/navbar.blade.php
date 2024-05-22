@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand bg-white navbar-light sticky-top px-4 py-0">
     <a href="#" class="sidebar-toggler flex-shrink-0">
         <!-- <i class="fa fa-bars"></i> -->
-        <img src="../assets/img/nono-logo.png" alt="" style="width: 50px; height: 50px;">
+        <img src="../assets/img/liga.png" alt="" style="width: 50px; height: 50px;">
     </a>
     <form class="d-md-flex ms-4">
         <input class="form-control border-0 fw-bold bg-light" type="text" placeholder="TEMPORADA 2024" disabled>
