@@ -5,8 +5,11 @@
 <!-- Recent Sales Start -->
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light rounded p-4">
-            <div class="d-flex align-items-center justify-content-between mb-4">
-                <h2 class="mb-0"><i class="fa fa-flag me-2"></i> Times</h2>
+            <div class="d-flex align-items-center justify-content-between mb-4 bg-white p-1 rounded">
+                <h2 class="mb-0">
+                    <img src="../assets/img/empty.png" class="mb-1" style="width: 50px; height: 50px;">
+                    Times
+                </h2>
                 <a href="/oppossing_team/create"><button type="button" class="btn btn-success m-2">Cadastrar</button></a>
             </div>
             <hr>
@@ -38,7 +41,7 @@
                                     <td>{{$oppossing_team->cell_phone}}</td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <a href=""><button type="button" class="btn btn-sm btn-danger me-1"><i class="fas fa-trash-alt text-dark"></i></button></a>
+                                            <!-- <a href=""><button type="button" class="btn btn-sm btn-danger me-1"><i class="fas fa-trash-alt text-dark"></i></button></a> -->
                                             <a href="/oppossing_team/edit/{{ $oppossing_team->id }}"><button type="button" class="btn btn-sm btn-warning me-1"><i class="fas fa-edit text-dark"></i></button></a>
                                             <a href="/oppossing_team/show/{{ $oppossing_team->id }}"><button type="button" class="btn btn-sm btn-primary me-1"><i class="fas fa-eye text-dark"></i></button></a>
                                         </div>

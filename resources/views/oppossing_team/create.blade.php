@@ -6,28 +6,30 @@
     <div class="container-fluid pt-4 px-4">
         <div class="col-sm-12 col-xl-12">
             <div class="bg-light rounded h-100 p-4">
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h2 class="mb-0"><i class="fa fa-flag me-2"></i>Time</h2>
-                    <a href="/oppossing_team/index"><button type="button" class="btn btn-primary m-2"><i class="fas fa-arrow-alt-circle-left"></i> Voltar</button></a>
+                <div class="mb-3 bg-white rounded p-1">
+                    <h3 class="mb-0">
+                        <img src="../assets/img/empty.png" class="mb-1" style="width: 50px; height: 50px;">
+                        </i>Cadastrar Time
+                    </h3>                    
                 </div>
                 <form action="/oppossing_team" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Nome</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="name">
+                            <input type="text" class="form-control" name="name" placeholder="Informe o nome do time">
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <label class="col-sm-4 col-form-label">Responsible</label>
+                        <label class="col-sm-4 col-form-label">Responsável</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="responsible">
+                            <input type="text" class="form-control" name="responsible" placeholder="Informe o nome do responsável">
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Celular</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="cell_phone">
+                            <input type="text" class="form-control" data-mask="(00) 00000-0000" name="cell_phone" placeholder="(00) 00000-0000">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -41,7 +43,10 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                        <a href="/oppossing_team/index"><button type="button" class="btn btn-primary m-2"><i class="fas fa-arrow-alt-circle-left"></i> Voltar</button></a>
+                    </div>               
                 </form>
             </div>
         </div>
