@@ -275,3 +275,16 @@
     background: var(--dark);
     border-color: var(--primary);
 }
+
+@media (max-width: 750px) {
+    .hidden {
+      display: none;
+    }
+}
+
+@media (min-width: 750px) {
+    .hidden-local {
+      display: none;
+    }
+}
+
