@@ -46,7 +46,7 @@
                                             <div class="d-flex justify-content-between">
                                                 <h2>{{$match->goals_in_favor}}</h2>
                                                 <h6><i class="fas fa-times m-2"></i></h6>
-                                                <h3>{{$match->own_goals}}</h3>
+                                                <h2>{{$match->own_goals}}</h2>
                                             </div>
                                         </td>
                                         <td hidden>vitoria</td>
@@ -55,7 +55,7 @@
                                             <div class="d-flex justify-content-between">
                                                 <h2>{{$match->goals_in_favor}}</h2>
                                                 <h6><i class="fas fa-times m-2"></i></h6>
-                                                <h3>{{$match->own_goals}}</h3>
+                                                <h2>{{$match->own_goals}}</h2>
                                             </div>
                                         </td>
                                         <td hidden>derrora</td>
@@ -64,7 +64,7 @@
                                             <div class="d-flex justify-content-between">
                                                 <h2>{{$match->goals_in_favor}}</h2>
                                                 <h6><i class="fas fa-times m-2"></i></h6>
-                                                <h3>{{$match->own_goals}}</h3>
+                                                <h2>{{$match->own_goals}}</h2>
                                             </div>
                                         </td>
                                         <td hidden>empate</td>
