@@ -6,18 +6,18 @@
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-sm-6 col-xl-4">
-            <div class="bg-primary rounded d-flex align-items-center justify-content-between p-4">
+            <div class="bg-primary rounded d-flex align-items-center justify-content-between p-4 goals">
                 @if($goals == False)
                     <h1 class="display-2 text-white">0</h1>
                     <div class="ms-3">
                         <h6 class="text-white">ARTILHEIRO</h6>
-                        <h6 class="">?</h6>
+                        <h3 class="">?</h3>
                     </div>
                 @else
                     <h1 class="display-2 text-white">{{$goals}}</h1>
                     <div class="ms-3">
                         <h6 class="text-white">ARTILHEIRO</h6>
-                        <h6 class="">{{strtoupper($name)}}</h6>
+                        <h3 class="text-white">{{strtoupper($name)}}</h3>
                     </div>
                 @endif
             </div>
@@ -26,43 +26,44 @@
             $now = date('d/m/y', strtotime(Carbon\Carbon::now()));
         @endphp
         <div class="col-sm-6 col-xl-4">
-            <div class="rounded d-flex align-items-center justify-content-between p-4" style="background: #00FA9A">
-                <h1 class="display-2 text-white">{{$sum_goals_in_favor}}</h1>
+            <div class="rounded d-flex align-items-center justify-content-between p-4 card-goals">
+                <h1 class="display-2 text-success">{{$sum_goals_in_favor}}</h1>
                 <div class="ms-3">
-                    <h6 class="text-white">GOLS</h6>
-                    <h6 class="">FEITOS</h6>
+                    <h6 class="text-success">GOLS</h6>
+                    <h3 class="text-success">FEITOS</h3>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-xl-4">
-            <div class="rounded d-flex align-items-center justify-content-between p-4" style="background: #FF7F50">
-                <h1 class="display-2 text-white">{{$sum_own_goals}}</h1>
+            <div class="rounded d-flex align-items-center justify-content-between p-4 card-goals">
+                <h1 class="display-2 text-danger">{{$sum_own_goals}}</h1>
                 <div class="ms-3">
-                    <h6 class="text-white">GOLS</h6>
-                    <h6 class="">TOMADOS</h6>
+                    <h6 class="text-danger">GOLS</h6>
+                    <h3 class="text-danger">TOMADOS</h3>
                 </div>
             </div>
         </div>
+        <!-- 256*60 -->
         <div class="col-sm-12 col-xl-3 col-6">
-            <div class="rounded d-flex align-items-center justify-content-between p-3 bg-warning">
+            <div class="rounded d-flex align-items-center justify-content-between p-3 card-matches">
                 <h5 class="mb-0">{{$count_matches}}</h5>
                 <h5 class="mb-0">Jogos</h5>
             </div>
         </div>
         <div class="col-sm-12 col-xl-3 col-6">
-            <div class="rounded d-flex align-items-center justify-content-between p-3" style="background: #00FA9A">
+            <div class="rounded d-flex align-items-center justify-content-between p-3 card-victory">
                 <h5 class="mb-0">{{$victory}}</h5>
                 <h5 class="mb-0">Vitórias</h5>
             </div>
         </div>
         <div class="col-sm-12 col-xl-3 col-6">
-            <div class="rounded d-flex align-items-center justify-content-between p-3 bg-light">
+            <div class="rounded d-flex align-items-center justify-content-between p-3 card-equal">
                 <h5 class="mb-0">{{$equal}}</h5>
                 <h5 class="mb-0">Empates</h5>
             </div>
         </div>
         <div class="col-sm-12 col-xl-3 col-6">
-            <div class="rounded d-flex align-items-center justify-content-between p-3" style="background: #FF7F50">
+            <div class="rounded d-flex align-items-center justify-content-between p-3 card-loss">
                 <h5 class="mb-0">{{$loss}}</h5>
                 <h5 class="mb-0">Derrotas</h5>
             </div>
@@ -88,21 +89,21 @@
                 <div class="col-sm-12 col-xl-12">
                     
                     @if($match->goals_in_favor > $match->own_goals) 
-                    <div class="rounded d-flex align-items-center justify-content-between p-2" style="background: #00FA9A">
+                    <div class="rounded d-flex align-items-center justify-content-between p-2 card-victory">
                         <h6 class="text-dark mb-0"><i class="far fa-calendar-alt"></i> {{date('d/m/y', strtotime($match->match_date))}}</h6>
                         @if($match->local == 'casa')
                             <h6 class="text-dark mb-0"><i class="fas fa-home text-primary"></i></h6>
                         @endif
                     </div>
                     @elseif($match->goals_in_favor < $match->own_goals)
-                    <div class="rounded d-flex align-items-center justify-content-between p-2" style="background: #FF7F50">
+                    <div class="rounded d-flex align-items-center justify-content-between p-2 card-loss">
                         <h6 class="text-dark mb-0"><i class="far fa-calendar-alt"></i> {{date('d/m/y', strtotime($match->match_date))}}</h6>
                         @if($match->local == 'casa')
                             <h6 class="text-dark mb-0"><i class="fas fa-home text-primary"></i></h6>
                         @endif
                     </div>
                     @else
-                    <div class="bg-light rounded d-flex align-items-center justify-content-between p-2">
+                    <div class="bg-light rounded d-flex align-items-center justify-content-between p-2 card-equal">
                         <h6 class="text-dark mb-0"><i class="far fa-calendar-alt"></i> {{date('d/m/y', strtotime($match->match_date))}}</h6>
                         @if($match->local == 'casa')
                             <h6 class="text-dark mb-0"><i class="fas fa-home text-primary"></i></h6>

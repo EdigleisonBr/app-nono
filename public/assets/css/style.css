@@ -288,3 +288,31 @@
     }
 }
 
+.card-goals{
+    background-image: url("../img/card-goals.png");
+}
+
+.goals{
+    background-image: url("../img/goals.png");
+}
+
+.card-matches{
+    background-image: url("../img/card-matches.png");
+}
+
+.card-victory{
+    background-image: url("../img/card-victory.png");
+}
+
+.card-equal{
+    background-image: url("../img/card-equal.png");
+}  
+
+.card-loss{
+    background-image: url("../img/card-loss.png");
+}
+
+.card-season{
+    background-image: url("../img/card-season.png");
+}
+  
