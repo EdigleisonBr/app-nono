@@ -78,6 +78,12 @@
     </div>
     @if(count($matches) > 0)
         @foreach($matches as $match)
+            @php
+                $now = now();
+                $timeZone = new DateTimeZone('UTC');
+                $matche_date = DateTime::createFromFormat ('d/m/Y', date('d/m/Y', strtotime($match->match_date)), $timeZone);
+                $date_now = DateTime::createFromFormat ('d/m/Y', date('d/m/Y', strtotime($now)), $timeZone);
+            @endphp
             <div class="row g-1 mb-2 border border-dark rounded bg-light">
                 <div class="col-sm-12 col-xl-12">
                     
@@ -108,10 +114,16 @@
                         <div class="ms-2 text-center">
                             <h6>Nonô FC</h6>
                             <img src="../assets/img/nono-logo.png" class="mb-1" style="width: 60px; height: 60px;">
-                            <h5>{{$match->goals_in_favor}}</h5>
+                            @if($matche_date <= $date_now)
+                                <h5>{{$match->goals_in_favor}}</h5>
+                            @endif
                         </div>
                         <div class="ms-2">
+                            @if($matche_date <= $date_now)
                             <h1 class="display-2"><i class="fas fa-times"></i></h1>
+                            @else
+                                <h1 class="display-2"><i class="fas fa-times text-primary"></i></h1>
+                            @endif
                         </div>
                         <div class="ms-2 text-center">
                             <h6>{{$match->team->name}}</h6>
@@ -119,8 +131,10 @@
                                 <img src="../assets/img/empty.png" class="mb-1" style="width: 60px; height: 60px;">
                             @else
                                 <img src="../assets/img/{{$match->team->image}}" class="mb-1" style="width: 60px; height: 60px;">
-                            @endif    
-                            <h5>{{$match->own_goals}}</h5>
+                            @endif  
+                            @if($matche_date <= $date_now)
+                                <h5>{{$match->own_goals}}</h5>
+                            @endif
                         </div>
                     </div>
                 </div>
