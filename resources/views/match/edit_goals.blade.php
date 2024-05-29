@@ -7,12 +7,20 @@
         <div class="col-sm-12 col-xl-12">
             <div class="bg-light rounded h-100 p-4">
                 <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h2 class="mb-0"><i class="fa fa-futbol me-2"></i>Gols</h2>
+                    <h2 class="mb-0">
+                        <img src="/assets/img/goals.jpeg" style="width: 50px; height: 50px;">
+                        Gols
+                    </h2>
                     <a href="/match/index"><button type="button" class="btn btn-primary m-2"><i class="fas fa-arrow-alt-circle-left"></i> Voltar</button></a>
                 </div>
                 <hr>
-                <div class="text-center mb-1">
-                    <h2 class="mb-0">{{date('d/m/Y', strtotime($match->match_date))}} - Nonô FC x {{$match->team->name}}</h2>
+                <div class="text-center mb-2 bg-white rounded mb-2">
+                    <h3>{{date('d/m/Y', strtotime($match->match_date))}}</span>
+                    <h3 class="mb-2">
+                        <img src="/assets/img/nono-logo.png" style="width: 40px; height: 40px;">
+                        <i class="fas fa-times"></i>
+                        <img src="/assets/img/{{$match->team->image}}" style="width: 40px; height: 40px;">
+                    </h3>
                 </div>
 
                 <form action="/match/update_goals/{{$match->id}}" method="POST" enctype="multipart/form-data">

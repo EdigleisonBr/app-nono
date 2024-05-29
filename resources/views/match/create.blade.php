@@ -7,7 +7,10 @@
         <div class="col-sm-12 col-xl-12">
             <div class="bg-light rounded h-100 p-4">
                 <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h2 class="mb-0"><i class="fa fa-running me-2"></i>Partida</h2>
+                    <h2 class="mb-0">
+                        <img src="../assets/img/matche.jpeg" class="mb-1" style="width: 50px; height: 50px;">
+                        Partida
+                    </h2>
                     <a href="/match/index"><button type="button" class="btn btn-primary m-2"><i class="fas fa-arrow-alt-circle-left"></i> Voltar</button></a>
                 </div>
                 <form action="/match" method="POST" enctype="multipart/form-data">

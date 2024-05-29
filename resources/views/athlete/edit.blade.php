@@ -7,7 +7,10 @@
         <div class="col-sm-12 col-xl-12">
             <div class="bg-light rounded h-100 p-4">
                 <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h2 class="mb-0"><i class="fa fa-running me-2"></i>{{$athlete->surname}}</h2>
+                    <h2 class="mb-0">
+                        <img src="/assets/img/athlete.jpeg" class="mb-1" style="width: 50px; height: 50px;">
+                        {{$athlete->surname}}
+                    </h2>
                     <a href="/athlete/index"><button type="button" class="btn btn-primary m-2"><i class="fas fa-arrow-alt-circle-left"></i> Voltar</button></a>
                 </div>
                 <form action="/athlete/update/{{$athlete->id}}" method="POST" enctype="multipart/form-data">

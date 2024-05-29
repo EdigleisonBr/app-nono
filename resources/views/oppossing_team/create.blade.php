@@ -6,9 +6,9 @@
     <div class="container-fluid pt-4 px-4">
         <div class="col-sm-12 col-xl-12">
             <div class="bg-light rounded h-100 p-4">
-                <div class="mb-3 bg-white rounded p-1">
+                <div class="mb-3">
                     <h3 class="mb-0">
-                        <img src="../assets/img/empty.png" class="mb-1" style="width: 50px; height: 50px;">
+                        <img src="../assets/img/empty.jpeg" class="mb-1" style="width: 50px; height: 50px;">
                         </i>Cadastrar Time
                     </h3>                    
                 </div>

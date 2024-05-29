@@ -75,7 +75,11 @@
 <!-- Jogos Start -->
 <div class="container-fluid pt-4 px-4 border rounded mt-4">
     <div class="mb-4 text-center">
-        <h5 class="mb-0"><i class="fas fa-star text-warning"></i> Jogos</h5>
+        <h5 class="mb-0">
+            <img src="../assets/img/matches.jpeg" class="mb-1" style="width: 40px; height: 40px;">
+            <!-- <i class="fas fa-star text-warning"></i>  -->
+            Jogos
+        </h5>
     </div>
     @if(count($matches) > 0)
         @foreach($matches as $match)

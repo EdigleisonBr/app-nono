@@ -5,9 +5,9 @@
 <!-- Recent Sales Start -->
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light rounded p-4">
-            <div class="d-flex align-items-center justify-content-between mb-4 bg-white p-1 rounded">
+            <div class="d-flex align-items-center justify-content-between mb-4">
                 <h2 class="mb-0">
-                    <img src="../assets/img/empty.png" class="mb-1" style="width: 50px; height: 50px;">
+                    <img src="../assets/img/empty.jpeg" class="mb-1" style="width: 50px; height: 50px;">
                     Times
                 </h2>
                 <a href="/oppossing_team/create"><button type="button" class="btn btn-success m-2">Cadastrar</button></a>
