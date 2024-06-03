@@ -179,7 +179,6 @@
                                             <td class="bg-warning fw-bold">{{$gunner->athlete->surname}}</td>
                                             <td class="bg-warning fw-bold">
                                                 {{$gunner->goal}} 
-                                                <i class="fas fa-heart text-danger"></i> Nonô ama!
                                             </td>
                                         @else
                                             <td class="text-center fw-bold">{{$loop->index+1}}º</td>
