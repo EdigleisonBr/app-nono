@@ -214,10 +214,12 @@
                             </thead>
                             <tbody>
                                 @foreach($birthdays as $birthday)
-                                    <tr>
-                                        <td>{{$birthday->surname}}</td>
-                                        <td>{{date('d/m', strtotime($birthday->date_birth))}}</td>
-                                    </tr>
+                                    @if($birthday->active)
+                                        <tr>
+                                            <td>{{$birthday->surname}}</td>
+                                            <td>{{date('d/m', strtotime($birthday->date_birth))}}</td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                             </tbody>
                         </table>
