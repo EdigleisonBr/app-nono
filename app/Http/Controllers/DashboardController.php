@@ -71,8 +71,15 @@ class DashboardController extends Controller
             elseif($m->own_goals == $m->goals_in_favor){
                 $equal += 1;
             }
-        }       
-
+        }   
+        
+        // Aproveitamento
+        if ($matches){
+            $disputed_points = $count_matches * 3;
+            $obtained_points = ($victory * 3) + $equal;
+            $success = round(($obtained_points / $disputed_points) * 100,1);
+        }
+                
         return view('dashboard', compact(
             'matches', 
             'name', 
@@ -85,7 +92,8 @@ class DashboardController extends Controller
             'month_',
             'victory',
             'loss',
-            'equal'
+            'equal',
+            'success'
         ));
     }
 

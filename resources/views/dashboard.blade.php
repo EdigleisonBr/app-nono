@@ -74,11 +74,21 @@
 
 <!-- Jogos Start -->
 <div class="container-fluid pt-4 px-4 border rounded mt-4">
-    <div class="mb-4 text-center">
+    <div class="d-flex align-items-center justify-content-between p-2 mb-4 text-center">
+    
         <h5 class="mb-0">
             <img src="../assets/img/matches.jpeg" class="mb-1" style="width: 40px; height: 40px;">
-            <!-- <i class="fas fa-star text-warning"></i>  -->
             Jogos
+        </h5>
+        @if ($success <= 40)
+            <h5 class="mb-0 bg-warning p-2 rounded card-loss">
+        @elseif ($success >= 41 && $success <= 59)
+            <h5 class="mb-0 bg-warning p-2 rounded card-equal">
+        @else
+            <h5 class="mb-0 bg-warning p-2 rounded card-victory">
+        @endif
+            <img src="../assets/img/percentage-icon.png" class="mb-1" style="width: 20px; height: 20px;">
+            {{$success}} %         
         </h5>
     </div>
     @if(count($matches) > 0)
