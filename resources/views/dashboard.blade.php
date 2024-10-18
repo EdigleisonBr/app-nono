@@ -98,10 +98,10 @@
                 $timeZone = new DateTimeZone('UTC');
                 $matche_date = DateTime::createFromFormat ('d/m/Y', date('d/m/Y', strtotime($match->match_date)), $timeZone);
                 $date_now = DateTime::createFromFormat ('d/m/Y', date('d/m/Y', strtotime($now)), $timeZone);
+                $goals_athletes = App\Models\Goal::where('match_id', $match->id)->get()->sortByDesc('goals');
             @endphp
             <div class="row g-1 mb-2 border border-dark rounded bg-light">
                 <div class="col-sm-12 col-xl-12">
-                    
                     @if($match->goals_in_favor > $match->own_goals) 
                     <div class="rounded d-flex align-items-center justify-content-between p-2 card-victory">
                         <h6 class="text-dark mb-0"><i class="far fa-calendar-alt"></i> {{date('d/m/y', strtotime($match->match_date))}}</h6>
@@ -152,6 +152,28 @@
                             @endif
                         </div>
                     </div>
+
+                    @if(count($goals_athletes) > 0)
+                        <div class="bg-ligth rounded text-center border p-2">
+                            <table class="text-center mx-auto">
+                                <tbody>
+                                    @foreach ($goals_athletes as $goal)
+                                        <tr>
+                                            <td class="fw-bold text-end me-3">
+                                                {{$goal->athlete->surname}} &nbsp;
+                                            </td>
+                                            <td class="text-start">
+                                                @for ($i = 0; $i < $goal->goals; $i++)
+                                                    <i class="fas fa-futbol fa-lg text-primary"></i>   
+                                                @endfor
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
+
                 </div>
             </div>
         @endforeach
