@@ -40,7 +40,7 @@
                     <!-- <i class="fa fa-futbol me-2"></i> -->
                     Partidas
                 </a>
-                </div>
+            </div>
         @endauth
         @guest
             <div class="d-flex align-items-center ms-4 mb-4">

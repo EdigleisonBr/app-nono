@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Cards -->
-<div class="container-fluid pt-4 px-4">
+<div class="container-fluid pt-1 px-3">
     <div class="row g-4">
         <div class="col-sm-6 col-xl-4">
             <div class="bg-primary rounded d-flex align-items-center justify-content-between p-4 goals">
@@ -80,7 +80,9 @@
             <img src="../assets/img/matches.jpeg" class="mb-1" style="width: 40px; height: 40px;">
             Jogos
         </h5>
-        @if ($success <= 40)
+        @if ($success == 0)
+            <h5 class="mb-0 bg-warning p-2 rounded card-equal">
+        @elseif ($success <= 40)
             <h5 class="mb-0 bg-warning p-2 rounded card-loss">
         @elseif ($success >= 41 && $success <= 59)
             <h5 class="mb-0 bg-warning p-2 rounded card-equal">

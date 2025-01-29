@@ -21,15 +21,21 @@
                         </div>
                     </div>
                     <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Imagem</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="image" placeholder="Informe o nome da imagem">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Responsável</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="responsible" placeholder="Informe o nome do responsável">
+                            <input type="text" class="form-control" name="responsible" placeholder="Informe o nome do responsável" required>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Celular</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" data-mask="(00) 00000-0000" name="cell_phone" placeholder="(00) 00000-0000">
+                            <input type="text" class="form-control" data-mask="00000-0000" name="cell_phone" placeholder="00000-0000">
                         </div>
                     </div>
                     <div class="row mb-3">
