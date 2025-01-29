@@ -14,15 +14,19 @@
     
     <form class="d-md-flex ms-3" action="/" method="GET" id="season-form">
         <div class="d-flex align-items-center bg-light p-1 rounded">
-            <span class="me-2 fw-bold">TEMPORADA</span>
-            <select id="season" name="season" class="form-select bg-light">
-                <option>{{$season}}</option>
-                @foreach($seasons as $season_)
-                    @if ($season != $season_)
-                        <option value={{$season_}}>{{$season_}}</option>
-                    @endif
-                @endforeach
-            </select>
+            @if (isset($season))
+                <span class="me-2 fw-bold">TEMPORADA</span>
+                <select id="season" name="season" class="form-select bg-light">
+                    <option>{{$season}}</option>
+                    @foreach($seasons as $season_)
+                        @if ($season != $season_)
+                            <option value={{$season_}}>{{$season_}}</option>
+                        @endif
+                    @endforeach                
+                </select>
+            @else
+                <span class="me-2 fw-bold">CADASTROS</span>
+            @endif
         </div>
     </form>
     <div class="navbar-nav align-items-center ms-auto">
