@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Cards -->
-<div class="container-fluid pt-1 px-3">
+<div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-sm-6 col-xl-4">
             <div class="bg-primary rounded d-flex align-items-center justify-content-between p-4 goals">
