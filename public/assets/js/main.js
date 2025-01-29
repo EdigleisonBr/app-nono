@@ -1,15 +1,6 @@
 (function ($) {
     "use strict";
 
-    // Loading year
-    const seasonSelect = document.getElementById('season');
-    const form = document.getElementById('season-form');
-    
-    seasonSelect.addEventListener('change', function() {
-        form.submit();  // Submete o formulário quando o valor do select mudar
-    });
-    // end Loading
-
     // Spinner
     var spinner = function () {
         setTimeout(function () {
