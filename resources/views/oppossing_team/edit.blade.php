@@ -26,6 +26,12 @@
                         </div>
                     </div>
                     <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Imagem</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="image" value="{{$oppossing_team->image}}">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Responsável</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" name="responsible" value="{{$oppossing_team->responsible}}">
@@ -34,7 +40,7 @@
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Celular</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="cell_phone" data-mask="(00) 00000-0000" value="{{$oppossing_team->cell_phone}}">
+                            <input type="text" class="form-control" name="cell_phone" data-mask="00000-0000" value="{{$oppossing_team->cell_phone}}">
                         </div>
                     </div>
                     <div class="row mb-3">

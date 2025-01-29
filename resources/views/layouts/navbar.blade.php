@@ -3,8 +3,27 @@
         <!-- <i class="fa fa-bars"></i> -->
         <img src="/assets/img/liga.png" alt="" style="width: 50px; height: 50px;">
     </a>
-    <form class="d-md-flex ms-4">
-        <input class="form-control border-0 fw-bold bg-light" type="text" placeholder="TEMPORADA 2024" disabled>
+    @php
+        $seasons = \App\Models\Matche::pluck('match_date')
+        ->map(function ($date) {
+            return \Carbon\Carbon::parse($date)->year;
+        })
+        ->unique()
+        ->sortDesc();
+    @endphp
+    
+    <form class="d-md-flex ms-3" action="/" method="GET" id="season-form">
+        <div class="d-flex align-items-center bg-light p-1 rounded">
+            <span class="me-2 fw-bold">TEMPORADA</span>
+            <select id="season" name="season" class="form-select bg-light">
+                <option>{{$season}}</option>
+                @foreach($seasons as $season_)
+                    @if ($season != $season_)
+                        <option value={{$season_}}>{{$season_}}</option>
+                    @endif
+                @endforeach
+            </select>
+        </div>
     </form>
     <div class="navbar-nav align-items-center ms-auto">
         @auth

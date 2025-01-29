@@ -16,25 +16,29 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $season_ = date('Y');
+        $season = $request->input('season', $season_);
+                       
         $now = Carbon::now();
         setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         $month_ = ucfirst(utf8_encode(strftime("%B", strtotime($now))));
-        
-        $matches = Matche::all()->sortByDesc('match_date');
+
+        $matches = Matche::whereYear('match_date', $season)->orderByRaw('match_date desc')->get();
 
         // Aniversários
         $month = date('m');
-        $birthdays = Athlete::whereMonth('date_birth', $month)->orderByRaw('day(date_birth) asc')->get();    
-                
-        // Artilheiros
+        $birthdays = Athlete::whereMonth('date_birth', $month)->orderByRaw('day(date_birth) asc')->get(); 
+
+        // Artilheiros - produção
         $gunners = Goal::select(
             [
                 'athlete_id',
                  DB::raw("sum(goals) AS goal")
             ]
-        )->groupBy('athlete_id')
+        )->where('season', $season)
+        ->groupBy('athlete_id')
         ->orderBy('goal', 'DESC')
         ->get(); 
         
@@ -47,14 +51,17 @@ class DashboardController extends Controller
             $goals = False;
         }
         
-        // Gols a Favor
-        $sum_goals_in_favor = DB::table('goals')->get()->sum('goals');
+        // Gols a Favor 
+        $sum_goals_in_favor = DB::table('goals')->where('season', $season)->get()->sum('goals');
 
         // Gols contra
-        $sum_own_goals = DB::table('goalkeeper_goals')->get()->sum('goals');
+        $sum_own_goals = DB::table('goalkeeper_goals')->where('season', $season)->get()->sum('goals');
 
         // Quantidade de Jogos
-        $matches_ = DB::table('matches')->where('match_date', '<', $now)->get();
+        if ( $season == date('Y', strtotime(now())) ){
+            $matches_ = DB::table('matches')->whereYear('match_date', $season)->where('match_date', '<', $now)->get();   
+        }
+        $matches_ = DB::table('matches')->whereYear('match_date', $season)->get(); // todo
         $count_matches = $matches_->count('id');
         
         // Vitórias, Derrotas, Empates
@@ -71,16 +78,18 @@ class DashboardController extends Controller
             elseif($m->own_goals == $m->goals_in_favor){
                 $equal += 1;
             }
-        }   
-        
+        }  
+                
+        $success = 0; // todo
         // Aproveitamento
-        if ($matches){
+        if (count($matches) > 0){
             $disputed_points = $count_matches * 3;
             $obtained_points = ($victory * 3) + $equal;
             $success = round(($obtained_points / $disputed_points) * 100,1);
         }
-                
+        
         return view('dashboard', compact(
+            'season',
             'matches', 
             'name', 
             'goals', 
@@ -104,7 +113,7 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        return view('athlete.create');
+        //
     }
 
     /**
@@ -115,23 +124,7 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        $athlete = new Athlete;
-        $athlete->name = $request->name;
-        $athlete->surname = $request->surname;    
-        $athlete->cell_phone = $request->cell_phone;
-        $athlete->date_birth = $request->date_birth; 
-        if ($request->goalkeeper){
-            $athlete->goalkeeper = 1;
-        }
-        else{ $athlete->goalkeeper = 0; }
-        if ($request->active){
-            $athlete->active = 1;
-        }
-        else{ $athlete->active = 0; }
-        $athlete->save();
-
-        // toast('Cadastro realizado com sucesso!','success');
-        return redirect('/athlete/index');
+        //
     }
 
     /**
@@ -142,8 +135,7 @@ class DashboardController extends Controller
      */
     public function show($id)
     {
-        $athlete = Athlete::findOrFail($id);
-        return view('athlete.show', ['athlete' => $athlete]);
+        //
     }
 
     /**
@@ -154,8 +146,7 @@ class DashboardController extends Controller
      */
     public function edit($id)
     {
-        $athlete = Athlete::findOrFail($id);
-        return view('athlete.edit', ['athlete' => $athlete]);
+        //
     }
 
     /**
@@ -167,12 +158,7 @@ class DashboardController extends Controller
      */
     public function update(Request $request)
     {
-        $data = $request->all();
-        $data['active'] = isset($request->active) ? 1 : 0;
-        $data['goalkeeper'] = isset($request->goalkeeper) ? 1 : 0;
-        Athlete::findOrFail($request->id)->update($data);
-        // toast('Cadastro editado com sucesso!','success');
-        return redirect('/athlete/index');
+        //
     }
 
     /**

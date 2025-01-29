@@ -38,6 +38,7 @@ class OppossingTeamController extends Controller
     {
         $oppossing_team = new OppossingTeam;
         $oppossing_team->name = $request->name;
+        $oppossing_team->image = $request->image;
         $oppossing_team->responsible = $request->responsible;    
         $oppossing_team->cell_phone = $request->cell_phone; 
         if ($request->active){

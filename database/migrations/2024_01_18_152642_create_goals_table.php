@@ -17,6 +17,7 @@ class CreateGoalsTable extends Migration
             $table->id();
             $table->foreignId('match_id')->constrained('matches');
             $table->foreignId('athlete_id')->constrained('athletes');
+            $table->integer('season');
             $table->integer('goals');
             $table->timestamps();
         });

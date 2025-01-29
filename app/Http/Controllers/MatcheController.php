@@ -6,7 +6,6 @@ use App\Models\Athlete;
 use App\Models\Goal;
 use App\Models\GoalkeeperGoal;
 use App\Models\Matche;
-use App\Models\OppossingTeam;
 use Illuminate\Http\Request;
 
 class MatcheController extends Controller
@@ -18,7 +17,10 @@ class MatcheController extends Controller
      */
     public function index()
     {
+        $year = date('Y'); // todo
+                
         $matches = Matche::orderBy('match_date', 'desc')->get();
+        
         return view('match.index', compact('matches'));
     }
 
@@ -47,7 +49,6 @@ class MatcheController extends Controller
         $match->oppossing_team_id = $request->oppossing_team_id;
         $match->save();
 
-        // toast('Cadastro realizado com sucesso!','success');
         return redirect('/match/index');
     }
 
@@ -84,8 +85,9 @@ class MatcheController extends Controller
     public function update(Request $request)
     {
         $data = $request->all();
+        
         Matche::findOrFail($request->id)->update($data);
-        // toast('Cadastro editado com sucesso!','success');
+        
         return redirect('/match/index');
     }
 
@@ -102,6 +104,7 @@ class MatcheController extends Controller
         $goalkeepers = Athlete::where('goalkeeper', '=', True)->get();
         $goals_in_favor = Goal::where('match_id', $id)->get();
         $own_goals = GoalkeeperGoal::where('match_id', $id)->get();
+        
         return view('match.edit_goals', ['match' => $match, 
                                         'athletes' => $athletes, 
                                         'goalkeepers' => $goalkeepers,
@@ -119,6 +122,7 @@ class MatcheController extends Controller
     public function update_goals(Request $request)
     {
         $match = Matche::where('id', $request->match_id)->first();
+        
         if($request->athlete){
             $search_goal = Goal::where('match_id', $request->match_id)->where('athlete_id', $request->athlete)->first();
             if($search_goal){
@@ -132,6 +136,7 @@ class MatcheController extends Controller
             }
             else{
                 $goal = new Goal();
+                $goal->season =  substr($match->match_date, 0, 4);
                 $goal->match_id = $request->match_id;
                 $goal->athlete_id = $request->athlete;
                 $goal->goals = $request->goals_in_favor; 
@@ -153,6 +158,7 @@ class MatcheController extends Controller
             else{
                 $goalkeeper = new GoalkeeperGoal();
                 $goalkeeper->match_id = $request->match_id;
+                $goalkeeper->season =  substr($match->match_date, 0, 4);
                 $goalkeeper->athlete_id = $request->goalkeeper;
                 $goalkeeper->goals = $request->own_goals;
                 $goalkeeper->save();
@@ -161,7 +167,6 @@ class MatcheController extends Controller
             }
         }
               
-        // toast('Cadastro editado com sucesso!','success');
         return redirect('/match/edit_goals/'.$request->match_id);
     }
 
@@ -179,6 +184,7 @@ class MatcheController extends Controller
         $match->goals_in_favor = $goals;
         $match->update();
         Goal::where('id', $id)->delete();
+        
         return redirect('/match/edit_goals/'.$goal->match_id);
     }
 
@@ -191,11 +197,14 @@ class MatcheController extends Controller
     public function delete_goals_goalkeeper($id)
     {
         $goalkeeper = GoalkeeperGoal::findOrFail($id);
+        
         $match = Matche::where('id', $goalkeeper->match_id)->first();
         $goals = $match->own_goals - $goalkeeper->goals;
         $match->own_goals = $goals;
         $match->update();
+        
         GoalkeeperGoal::where('id', $id)->delete();
+        
         return redirect('/match/edit_goals/'.$goalkeeper->match_id);
     }
 

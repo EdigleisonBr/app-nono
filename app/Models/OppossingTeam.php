@@ -10,5 +10,5 @@ class OppossingTeam extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'responsible', 'cell_phone', 'active'];
+    protected $fillable = ['name', 'responsible', 'image', 'cell_phone', 'active'];
 }
