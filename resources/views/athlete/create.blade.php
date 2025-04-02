@@ -2,7 +2,6 @@
 @section('title', 'Dashboard | Admin')
 @section('content')
 
-<!-- Recent Sales Start -->
     <div class="container-fluid pt-4 px-4">
         <div class="col-sm-12 col-xl-12">
             <div class="bg-light rounded h-100 p-4">
@@ -25,6 +24,12 @@
                         <label class="col-sm-4 col-form-label">Apelido</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" name="surname" placeholder="Apelido do atleta" required>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Instagram</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="instagram" placeholder="@" required>
                         </div>
                     </div>
                     <div class="row mb-2">
@@ -66,6 +71,5 @@
             </div>
         </div>
     </div>
-    <!-- Recent Sales End -->
 
 @endsection

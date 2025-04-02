@@ -38,7 +38,8 @@ class AthleteController extends Controller
     {
         $athlete = new Athlete;
         $athlete->name = $request->name;
-        $athlete->surname = $request->surname;    
+        $athlete->surname = $request->surname;
+        $athlete->instagram = $request->instagram;
         $athlete->cell_phone = $request->cell_phone;
         $athlete->date_birth = $request->date_birth; 
         if ($request->goalkeeper){

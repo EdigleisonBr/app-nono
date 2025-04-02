@@ -107,6 +107,23 @@
                 }
             });
         });
+
+        function copyToClipboard(element) {
+            var tempInput = document.createElement("input");
+            tempInput.value = element.innerText;
+            document.body.appendChild(tempInput);
+            
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            
+            var toast = document.getElementById("toast");
+            toast.classList.add("show");
+            
+            setTimeout(function() {
+                toast.classList.remove("show");
+            }, 2000);
+        }
     </script>
 
     <!-- select2 -->

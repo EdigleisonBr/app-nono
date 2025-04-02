@@ -19,6 +19,7 @@ class CreateAthletesTable extends Migration
             $table->string('surname');
             $table->date('date_birth');
             $table->string('cell_phone')->nullable();
+            $table->string('instagram', 50)->nullable();
             $table->boolean('goalkeeper')->default(0);
             $table->boolean('active')->default(1);
             $table->timestamps();

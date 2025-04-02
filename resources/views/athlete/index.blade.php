@@ -2,7 +2,6 @@
 @section('title', 'Dashboard | Admin')
 @section('content')
 
-<!-- Recent Sales Start -->
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light rounded p-4">
             <div class="d-flex align-items-center justify-content-between mb-4">
@@ -23,6 +22,7 @@
                                 <!-- <th scope="col">Apelido</th> -->
                                 <th scope="col">Data de nascimento</th>
                                 <th scope="col">Celular</th>
+                                <th scope="col">Instagram</th>
                                 <th scope="col">Ativo</th>
                                 <th scope="col">Ações</th>
                             </tr>
@@ -30,10 +30,22 @@
                         <tbody>
                             @foreach ($athletes as $athlete)
                                 <tr>
-                                    <!-- <td>{{ucfirst($athlete->name)}}</td> -->
                                     <td>{{$athlete->surname}}</td>
                                     <td>{{date('d/m/Y', strtotime($athlete->date_birth))}}</td>
                                     <td>{{$athlete->cell_phone}}</td>
+                                    @if($athlete->instagram == null)
+                                        <td>-</td>
+                                    @else
+                                        <td 
+                                            onclick="copyToClipboard(this)" 
+                                            style="cursor: pointer;"
+                                            data-toggle="tooltip" 
+                                            data-placement="top" 
+                                            title="Clique para copiar"
+                                        >
+                                            {{ $athlete->instagram }}
+                                        </td>
+                                    @endif
                                     @if($athlete->active == 1)
                                         <td class="text-primary">Sim</td>
                                     @else
@@ -58,6 +70,5 @@
             @endif
         </div>
     </div>
-    <!-- Recent Sales End -->
-
+    
 @endsection

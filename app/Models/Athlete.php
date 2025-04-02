@@ -9,5 +9,5 @@ class Athlete extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'surname', 'cell_phone', 'date_birth', 'goalkeeper', 'active'];
+    protected $fillable = ['name', 'surname', 'instagram', 'cell_phone', 'date_birth', 'goalkeeper', 'active'];
 }

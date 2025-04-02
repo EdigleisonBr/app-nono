@@ -2,7 +2,6 @@
 @section('title', 'Dashboard | Admin')
 @section('content')
 
-<!-- Recent Sales Start -->
     <div class="container-fluid pt-4 px-4">
         <div class="col-sm-12 col-xl-12">
             <div class="bg-light rounded h-100 p-4">
@@ -26,6 +25,12 @@
                         <input type="text" class="form-control" name="surname" value="{{$athlete->surname}}" disabled>
                     </div>
                 </div>
+                <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Instagram</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="instagram" value="{{ $athlete->instagram ?? 'Não informado' }}" disabled>
+                        </div>
+                    </div>
                 <div class="row mb-2">
                     <label class="col-sm-4 col-form-label">Celular</label>
                     <div class="col-sm-8">
@@ -79,6 +84,5 @@
             </div>
         </div>
     </div>
-    <!-- Recent Sales End -->
-
+    
 @endsection
