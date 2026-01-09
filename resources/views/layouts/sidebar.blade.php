@@ -40,6 +40,11 @@
                     <!-- <i class="fa fa-futbol me-2"></i> -->
                     Partidas
                 </a>
+                <a href="/match/shopping" class="nav-item nav-link">
+                    <img src="/assets/img/shopping.png" style="width: 40px; height: 40px;">
+                    <!-- <i class="fa fa-futbol me-2"></i> -->
+                    Compras
+                </a>
             </div>
         @endauth
         @guest

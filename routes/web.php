@@ -42,6 +42,8 @@ Route::put('/match/update_goals/{id}', [MatcheController::class, 'update_goals']
 Route::get('/match/delete_goals/{id}', [MatcheController::class, 'delete_goals'])->middleware('auth');
 Route::get('/match/delete_goals_goalkeeper/{id}', [MatcheController::class, 'delete_goals_goalkeeper'])->middleware('auth');
 
+Route::get('/match/shopping', [MatcheController::class, 'shopping']);
+
 Route::get('/', [DashboardController::class, 'index']);
 // Route::get('/', function () {
 //     return view('dashboard');
