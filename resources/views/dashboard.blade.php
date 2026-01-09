@@ -6,21 +6,23 @@
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-sm-6 col-xl-4">
-            <div class="bg-primary rounded d-flex align-items-center justify-content-between p-4 goals">
-                @if($goals == False)
-                    <h1 class="display-2 text-white">0</h1>
-                    <div class="ms-3">
-                        <h6 class="text-white">ARTILHEIRO</h6>
-                        <h3 class="">?</h3>
-                    </div>
-                @else
-                    <h1 class="display-2 text-white">{{$goals}}</h1>
-                    <div class="ms-3">
-                        <h6 class="text-white">ARTILHEIRO</h6>
-                        <h3 class="text-white">{{strtoupper($name)}}</h3>
-                    </div>
-                @endif
-            </div>
+            <a href="#gunner">
+                <div class="bg-primary rounded d-flex align-items-center justify-content-between p-4 goals">
+                    @if($goals == False)
+                        <h1 class="display-2 text-white">0</h1>
+                        <div class="ms-3">
+                            <h6 class="text-white">ARTILHEIRO</h6>
+                            <h3 class="">?</h3>
+                        </div>
+                    @else
+                        <h1 class="display-2 text-white">{{$goals}}</h1>
+                        <div class="ms-3">
+                            <h6 class="text-white">ARTILHEIRO</h6>
+                            <h3 class="text-white">{{strtoupper($name)}}</h3>
+                        </div>
+                    @endif
+                </div>
+            </a>
         </div>
         @php
             $now = date('d/m/y', strtotime(Carbon\Carbon::now()));
@@ -188,7 +190,7 @@
 <!-- Jogos End -->
 
 <!-- Artilheiros e Aniversários -->
-<div class="container-fluid pt-4 px-4">
+<div id="gunner" class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-sm-12 col-xl-6">
             <div class="bg-light text-center rounded p-4">
