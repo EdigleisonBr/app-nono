@@ -207,19 +207,27 @@
                             </thead>
                             <tbody>
                                 @foreach($gunners as $gunner)
-                                    <tr>
-                                        @if ($loop->index == 0)
-                                            <td class="bg-warning text-center fw-bold">{{$loop->index+1}}º</td>
-                                            <td class="bg-warning fw-bold">{{$gunner->athlete->surname}}</td>
-                                            <td class="bg-warning fw-bold">
-                                                {{$gunner->goal}} 
-                                            </td>
-                                        @else
-                                            <td class="text-center fw-bold">{{$loop->index+1}}º</td>
+                                    @if ($gunner->athlete->active)
+                                        <tr>
+                                            @if ($loop->index == 0)
+                                                <td class="bg-warning text-center fw-bold">{{$loop->index+1}}º</td>
+                                                <td class="bg-warning fw-bold">{{$gunner->athlete->surname}}</td>
+                                                <td class="bg-warning fw-bold">
+                                                    {{$gunner->goal}} 
+                                                </td>
+                                            @else
+                                                <td class="text-center fw-bold">{{$loop->index+1}}º</td>
+                                                <td>{{$gunner->athlete->surname}}</td>
+                                                <td>{{$gunner->goal}}</td>
+                                            @endif
+                                        </tr>
+                                    @else
+                                        <tr>
+                                            <td class="text-center fw-bold">🚫</td>
                                             <td>{{$gunner->athlete->surname}}</td>
                                             <td>{{$gunner->goal}}</td>
-                                        @endif
-                                    </tr>
+                                        </tr>
+                                    @endif
                                 @endforeach
                             </tbody>
                         </table>

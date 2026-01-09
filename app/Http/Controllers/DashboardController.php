@@ -33,14 +33,17 @@ class DashboardController extends Controller
 
         // Artilheiros - produção
         $gunners = Goal::select(
-            [
-                'athlete_id',
-                 DB::raw("sum(goals) AS goal")
-            ]
-        )->where('season', $season)
-        ->groupBy('athlete_id')
+            'goals.athlete_id',
+            DB::raw("SUM(goals.goals) AS goal")
+        )
+        ->join('athletes', 'athletes.id', '=', 'goals.athlete_id')
+        ->where('goals.season', $season)
+        ->groupBy('goals.athlete_id', 'athletes.active')
+        // ativa primeiro (0 = ativo, 1 = inativo)
+        ->orderByRaw('CASE WHEN athletes.active = 1 THEN 1 ELSE 0 END DESC')
+        // depois ordena pelos gols
         ->orderBy('goal', 'DESC')
-        ->get(); 
+        ->get();
         
         if(count($gunners) > 0){
             $name = Athlete::where('id', $gunners[0]['athlete_id'])->value('surname');
